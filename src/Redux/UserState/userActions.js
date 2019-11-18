@@ -19,10 +19,4 @@ export const login = (userInfo) => dispatch => {
         .catch(()=>dispatch({type:LOGIN_FAILED}))
 }
 
-export const signup = (userInfo) => dispatch => {
-    dispatch({SIGN_UP_START})
-    axiosWithAuth()
-        .post("Whatever URL",userInfo)
-        .then(res=>console.log(res.data))
-        .catch(err=>console.log(err.message))
-}
+export const signupFirstStep = (userInfo) => ({SIGN_UP_START})

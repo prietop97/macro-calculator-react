@@ -55,8 +55,7 @@ export const userReducer = (state = initialState , {type , payload}) => {
         case SIGN_UP_START:
             return {
                 ...state,
-                isFetching: true,
-                error: null
+                currentUser: payload
         }
         case SIGN_UP_SUCCESS:
             return {
