@@ -6,6 +6,8 @@ import Header from './Components/Header';
 import Footer from './Components/Footer';
 import Login from './Components/Login';
 import SignUp from './Components/SignUp';
+import WelcomePage from './Components/WelcomePage';
+import SnacksAndMeals from './Components/SnacksAndMeals';
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
         <Route path = "/Biometrics" component = {BioForm} />
         <Route path = "/Login" component = {Login} />
         <Route path = "/SignUp" component = {SignUp} />
+        <Route path = "/WelcomePage" component = {WelcomePage} />
+        <Route path = "/SnacksAndMeals" component = {SnacksAndMeals} />
       </Switch>
       <Footer>
       </Footer>
