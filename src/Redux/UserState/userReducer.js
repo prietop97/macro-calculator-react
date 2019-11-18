@@ -21,7 +21,8 @@ const initialState = {
             },
             activityLevel: "moderate",
             weight: 150,
-            gender: "male"
+            gender: "male",
+            goal: "maintain"
         },
         numberOfMeals: {
             snacks: 0,

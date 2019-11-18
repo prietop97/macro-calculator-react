@@ -6,13 +6,6 @@ const getBMR = (stats,height) => {
     }
 }
 
-const getMacros = (stats) => {
-    const height = stats.height.feet * 12 + stats.height.inches
-
-    const BMR = getBMR(stats,height)
-    const activityLevel = getActivityLevel(stats.activityLevel)
-
-}
 
 const getActivityLevel = (activityLevel) => {
     switch(activityLevel){
@@ -28,12 +21,41 @@ const getActivityLevel = (activityLevel) => {
             return 1.9;
         default:
             return 1.55
-    }
+        }
 }
 
 const getGoals = (goal) => {
     switch(goal){
+        case 'aggressive':
+            return 0.8;
+        case 'moderate':
+            return 0.85;
+        case 'light':
+            return 0.9;
+        case 'maintain':
+            return 1;
+        case 'moderate-gain':
+            return 1.1;
+        case 'aggressive-gain':
+            return 1.15;
         default:
             return 1
     }
+}
+   
+export const getMacros = (stats) => {
+    const height = stats.height.feet * 12 + stats.height.inches
+
+    const BMR = getBMR(stats,height)
+    console.log(BMR)
+    const activityLevel = getActivityLevel(stats.activityLevel)
+    console.log(activityLevel)
+    const getGoal = getGoals(stats.goal)
+    console.log(getGoal)
+    const totalCalories = Math.floor(BMR * activityLevel * getGoal)
+    const gramsOfProtein = totalCalories * 0.075
+    const gramsOfCarbs = totalCalories * 0.1
+    const gramsOfFats = totalCalories * 0.033
+
+    return {gramsOfProtein,gramsOfCarbs,gramsOfFats,totalCalories}
 }
