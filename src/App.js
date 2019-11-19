@@ -11,19 +11,21 @@ import SignUp from './Components/SignUp';
 import WelcomePage from './Components/WelcomePage';
 import SnacksAndMeals from './Components/SnacksAndMeals';
 import CalculatedPage from './Components/CalculatedPage';
+import LandingPage from './Components/LandingPage';
 
 function App() {
   return (
     <div>
       <Header />
       <Switch>
+        <Route exact path="/" component={LandingPage} />
         <PrivateRoute exact path="/Dashboard" component={Dashboard} />
         <Route path = "/Biometrics" component = {BioForm} />
         <Route path = "/Login" component = {Login} />
         <Route path = "/SignUp" component = {SignUp} />
         <Route path = "/WelcomePage" component = {WelcomePage} />
         <Route path = "/SnacksAndMeals" component = {SnacksAndMeals} />
-        
+        <Route path = "/CalculatedPage" component = {CalculatedPage} />
       </Switch>
       <Footer>
       </Footer>

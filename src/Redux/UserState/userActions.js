@@ -32,7 +32,7 @@ export const signUp = (userInfo,history) => dispatch => {
         .post("https://bw-macro-calculator.herokuapp.com/auth/register", userInfo)
         .then(res=>{
             localStorage.setItem("token",res.data.token)
-            dispatch({type: SIGN_UP_SUCCESS, payload: res.data.username})
+            dispatch({type: SIGN_UP_SUCCESS, payload: res.data})
             history.push("/WelcomePage")
         })
         .catch((err)=>dispatch({type: SIGN_UP_FAILED , payload: err.message}))

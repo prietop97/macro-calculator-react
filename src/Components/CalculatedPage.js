@@ -1,8 +1,9 @@
 import React from 'react';
-import styled from 'styled-components';
+// import styled from 'styled-components';
+import BioForm from './BioForm';
 
-const CalculatedPage = () => {
-
+const CalculatedPage = props => {
+    console.log(props);
     return (
         <div>
             <h3>Based on the information given, your daily intake of macronutrients has been calculated for you.</h3>
@@ -23,7 +24,7 @@ const CalculatedPage = () => {
                 {/* An image will go here! */}
             </div>
 
-            <h2>We will now curate a weekly meal plan based on your numbers. Your daily macronutrients will be automatically calculated between the meals you choose per day.</h2>
+            {/* <h2>We will now curate a weekly meal plan based on your numbers. Your daily macronutrients will be automatically calculated between the meals you choose per day.</h2> */}
             <button className='continue'>Continue</button>
         </div>
     )

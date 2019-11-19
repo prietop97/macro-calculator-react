@@ -1,20 +1,23 @@
 import {
     FETCH_STATS_FAILED,
     FETCH_STATS_SUCCESS,
-    FETCH_STATS_START
+    FETCH_STATS_START,
+    SEND_STATS_START,
+    SEND_STATS_SUCCESS,
+    SEND_STATS_FAILED
 } from "./userStatsActions"
 
 const initialState = {
-    userStats: {},
+    userStatsObj: {},
     isFetching: false,
     error: null,
-    totalCalories = 0,
-    proteinGrams = 0,
-    carbsGrams = 0,
-    fatsGrams = 0
+    totalCalories: "",
+    proteinGrams : "",
+    carbsGrams : "",
+    fatsGrams : ""
 }
 
-const userStatsReducer = (state = initialState , {type , payload}) => {
+export const userStatsReducer = (state = initialState , {type , payload}) => {
     switch(type){
         case FETCH_STATS_START:
             return {
@@ -27,7 +30,7 @@ const userStatsReducer = (state = initialState , {type , payload}) => {
             return {
                 ...state,
                 isFetching: false,
-                userStats: payload,
+                userStatsObj: payload,
                 totalCalories: 0,
                 proteinGrams: 0,
                 carbsGrams: 0,
@@ -38,7 +41,28 @@ const userStatsReducer = (state = initialState , {type , payload}) => {
                 ...state,
                 isFetching: false,
                 error: payload,
-                userStats: {}
+                userStatsObj: {}
+            }
+        case SEND_STATS_START:
+            return{
+                ...state,
+                isFetching: true,
+                error: null,
+                userStatsObj: {}
+            }
+        case SEND_STATS_SUCCESS:
+            return{
+                ...state,
+                isFetching: false,
+                error: null,
+                userStatsObj: payload
+            }
+        case SEND_STATS_FAILED:
+            return{
+                ...state,
+                isFetching: false,
+                error: payload,
+                userStatsObj: {}
             }
         default:
             return state

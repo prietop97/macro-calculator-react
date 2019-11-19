@@ -1,4 +1,5 @@
 import React from 'react';
+import {meals} from './data';
 
 const SnacksAndMeals = () => {
 
@@ -9,57 +10,43 @@ const SnacksAndMeals = () => {
             <div>
                 <h3>Monday</h3>
                 <select>
-                    <option value='4'>4 meals per day</option>
-                    <option value='3'>3 meals per day</option>
-                    <option value='2'>3 meals + 2 snacks per day</option>
+                    {meals.map((m,index) => (<option key={index} value={m}>{m}</option>))}
                 </select>
             </div>
             <div>
                 <h3>Tuesday</h3>
                 <select>
-                    <option value='4'>4 meals per day</option>
-                    <option value='3'>3 meals per day</option>
-                    <option value='2'>3 meals + 2 snacks per day</option>
+                {meals.map((m,index) => (<option key={index} value={m}>{m}</option>))}
                 </select>
             </div>
             <div>
                 <h3>Wednesday</h3>
                 <select>
-                    <option value='4'>4 meals per day</option>
-                    <option value='3'>3 meals per day</option>
-                    <option value='2'>3 meals + 2 snacks per day</option>
+                {meals.map((m,index) => (<option key={index} value={m}>{m}</option>))}
                 </select>
             </div>
             <div>
                 <h3>Thursday</h3>
                 <select>
-                    <option value='4'>4 meals per day</option>
-                    <option value='3'>3 meals per day</option>
-                    <option value='2'>3 meals + 2 snacks per day</option>
+                {meals.map((m,index) => (<option key={index} value={m}>{m}</option>))}
                 </select>
             </div>
             <div>
                 <h3>Friday</h3>
                 <select>
-                    <option value='4'>4 meals per day</option>
-                    <option value='3'>3 meals per day</option>
-                    <option value='2'>3 meals + 2 snacks per day</option>
+                {meals.map((m,index) => (<option key={index} value={m}>{m}</option>))}
                 </select>
             </div>
             <div>
                 <h3>Saturday</h3>
                 <select>
-                    <option value='4'>4 meals per day</option>
-                    <option value='3'>3 meals per day</option>
-                    <option value='2'>3 meals + 2 snacks per day</option>
+                {meals.map((m,index) => (<option key={index} value={m}>{m}</option>))}
                 </select>
             </div>
             <div>
                 <h3>Sunday</h3>
                 <select>
-                    <option value='4'>4 meals per day</option>
-                    <option value='3'>3 meals per day</option>
-                    <option value='2'>3 meals + 2 snacks per day</option>
+                {meals.map((m,index) => (<option key={index} value={m}>{m}</option>))}
                 </select>
             </div>
             </div>

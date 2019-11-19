@@ -11,7 +11,7 @@ const WelcomePage = ({currentUser}) => {
             <div className = 'welcome'>
                 {/* Fill in the name with the endpoints later */}
                 <h3>Welcome !</h3>
-                <h3 className="name">{currentUser}</h3>
+                {/* <h3 className="name">{currentUser}</h3> */}
             </div>
             <div className = 'need'>
                 <h4>What You'll Need</h4>

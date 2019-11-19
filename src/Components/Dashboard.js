@@ -19,7 +19,7 @@ function Dashboard(props) {
             <h1>Total Daily Calories</h1>
                 <p>{}</p>
                 <div>
-                    <div className='days'>
+                    <div className='daysColumn'>
                         <h1 className='orange'>Monday</h1>
                         <h1>Tuesday</h1>
                         <h1>Wednesday</h1>

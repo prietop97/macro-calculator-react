@@ -10,7 +10,7 @@ import {
 const initialState = {
     error: null,
     isFetching: false,
-    currentUser: ""
+    currentUser: {}
 }
 
 export const userReducer = (state = initialState , {type , payload}) => {

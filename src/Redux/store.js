@@ -3,10 +3,12 @@ import thunk from "redux-thunk"
 import logger from "redux-logger"
 
 import { userReducer } from "./UserState/userReducer"
+import { userStatsReducer } from "./UserStats/userStatsReducer";
 
 
 let reducer = combineReducers({
-    userState : userReducer
+    userState : userReducer,
+    userStats : userStatsReducer
 })
 
 const middleware = [thunk,logger]
