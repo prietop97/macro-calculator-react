@@ -1,8 +1,22 @@
-import React from 'react';
+import React,{useState} from 'react';
 import styled from 'styled-components';
 import {month, days, year, feets, inches}from './data.js';
 
+
+const initialValues = {
+    first_name: "",
+    last_name: "",
+    gender: "",
+    age: "",
+    height: "",
+    weight: "",
+    activity_factor: "",
+    meals_per_day: "",
+    snacks_per_day: "",
+    goal_multiplier: ""
+}
 const BioForm = (props) => {
+    const [formValues , setFormValues] = useState(initialValues)
 
     return (
         <BioFormContainer className= 'login'>
@@ -53,31 +67,28 @@ const BioForm = (props) => {
                     <h3>Exercise Amount:</h3>
                     <select>
                         <option value="not-accepted">Please Choose An Option</option>
-                        <option value = 'none'>0 days per week</option>
-                        <option value = 'light'> 1-2 days per week</option>
-                        <option value = 'medium'>3-4 days per week</option>
-                        <option value = 'moderate'>5-6 days per week</option>
-                        <option value = 'heavy'>7 days per week</option>
+                        <option value = '1.2'>0 days per week</option>
+                        <option value = '1.375'> 1-2 days per week</option>
+                        <option value = '1.55'>3-4 days per week</option>
+                        <option value = '1.725'>5-6 days per week</option>
+                        <option value = '1.9'>7 days per week</option>
                     </select>
                 </div>
                 <div className = 'single-line'>
                     <h3>Goals</h3>
                     <select>
                         <option value="not-accepted">Please Choose An Option</option>
-                        <option value = 'aggressive'>Aggressive Weight Loss (20% deficit)</option>
-                        <option value = 'moderate'>Moderate Weight Loss (15% deficit)</option>
-                        <option value = 'light'>Light Weight Loss (10% deficit)</option>
-                        <option value = 'maintain'>Maintain Current Weight</option>
-                        <option value = 'moderate-gain'>Moderate Weight Gain (10% surplus)</option>
-                        <option value = 'aggressive-gain'>Aggressive Weight Gain (15% surplus)</option>
+                        <option value = '0.8'>Aggressive Weight Loss (20% deficit)</option>
+                        <option value = '0.85'>Moderate Weight Loss (15% deficit)</option>
+                        <option value = '0.9'>Light Weight Loss (10% deficit)</option>
+                        <option value = '1'>Maintain Current Weight</option>
+                        <option value = '1.1'>Moderate Weight Gain (10% surplus)</option>
+                        <option value = '1.15'>Aggressive Weight Gain (15% surplus)</option>
                     </select>
                     </div>
                 </div>
     
-                <button onClick={(e)=>{
-                    e.preventDefault()
-                    props.history.push("/Dashboard")
-                }}className= 'continue' >Continue</button>
+                <button className='continue'>Continue</button>
             </form>
             
         </BioFormContainer>

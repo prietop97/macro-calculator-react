@@ -12,16 +12,16 @@ const SignUp = ({signUp , history}) => {
 
     const onSubmit = (e) => {
         e.preventDefault()
-        signUp(formValues)
-        history.push("/WelcomePage")
+        signUp(formValues,history)
     }
+    console.log(formValues)
 
     return (
         <div className= 'login'>
             <h1>SignUp</h1> 
             <form>
             <h2>Username:</h2>
-                <input type='email' placeholder='Username' onChange={handleChange} name="username" value={formValues.username} />
+                <input type='username' placeholder='Username' onChange={handleChange} name="username" value={formValues.username} />
             </form>
             <form>
             <h2>Password:</h2>

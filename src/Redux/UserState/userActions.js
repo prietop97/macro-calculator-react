@@ -1,4 +1,5 @@
 import axiosWithAuth from "../../Utils/axiosWithAuth"
+import axios from "axios"
 
 export const LOGIN_START = "LOGIN_START"
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS"
@@ -13,24 +14,28 @@ export const GET_USER_SUCCESS = "GET_USER_SUCCESS"
 export const GET_USER_FAILED = "GET_USER_FAILED"
 
 
-export const login = (userInfo) => dispatch => {
+export const login = (userInfo,history) => dispatch => {
     dispatch({type: LOGIN_START});
-    axiosWithAuth()
-        .post("/login",userInfo)
+    axios
+        .post("https://bw-macro-calculator.herokuapp.com/auth/login",userInfo)
         .then(res=>{
-            console.log(res)
+            localStorage.setItem("token",res.data.token)
+            dispatch({type:LOGIN_SUCCESS , payload: res.data.username})
+            history.push("/Dashboard")
         })
-        .catch((err)=>console.log(err))
+        .catch((err)=>console.log(err.message))
 }
 
-export const signUp = (userInfo) => dispatch => {
+export const signUp = (userInfo,history) => dispatch => {
     dispatch({type: SIGN_UP_START});
-    axiosWithAuth()
-        .post("/register", userInfo)
+    axios
+        .post("https://bw-macro-calculator.herokuapp.com/auth/register", userInfo)
         .then(res=>{
-            console.log(res)
+            localStorage.setItem("token",res.data.token)
+            dispatch({type: SIGN_UP_SUCCESS, payload: res.data.username})
+            history.push("/WelcomePage")
         })
-        .catch((err)=>console.log(err))
+        .catch((err)=>dispatch({type: SIGN_UP_FAILED , payload: err.message}))
 }
 
 export const getUser = () => dispatch => {

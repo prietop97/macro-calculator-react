@@ -10,9 +10,7 @@ import {
 const initialState = {
     error: null,
     isFetching: false,
-    currentUser: {
-        name: "John Doe"
-    },
+    currentUser: ""
 }
 
 export const userReducer = (state = initialState , {type , payload}) => {
@@ -22,7 +20,7 @@ export const userReducer = (state = initialState , {type , payload}) => {
                 ...state,
                 isFetching: true,
                 error: null,
-                currentUser: {}
+                currentUser: ""
             }
         case LOGIN_SUCCESS:
             return {
@@ -36,28 +34,28 @@ export const userReducer = (state = initialState , {type , payload}) => {
                 ...state,
                 error: "Wrong Email Or Password",
                 isFetching: false,
-                currentUser: {}
+                currentUser: ""
             }
         case SIGN_UP_START:
             return {
                 ...state,
                 error: null,
                 isFetching: true,
-                currentUser: {}
+                currentUser: ""
             }
         case SIGN_UP_SUCCESS:
             return {
                 ...state,
                 error: null,
                 isFetching: false,
-                currentUser: {},
+                currentUser: payload,
             }
         case SIGN_UP_FAILED:
             return {
                 ...state,
                 error: payload,
                 isFetching: true,
-                currentUser: {}
+                currentUser: ""
             }
         default:
             return state

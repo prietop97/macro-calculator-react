@@ -1,8 +1,38 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from "react-redux"
 import styled from 'styled-components';
-import { getUser } from "../Redux/UserState/userActions"
+
+
+const WelcomePage = ({currentUser}) => {
+
+    return (
+        <WelcomeContainer>
+            <div className = 'welcome'>
+                {/* Fill in the name with the endpoints later */}
+                <h3>Welcome !</h3>
+                <h3 className="name">{currentUser}</h3>
+            </div>
+            <div className = 'need'>
+                <h4>What You'll Need</h4>
+                <p>Food Scale</p>
+                <p>Body Weight Scale</p>
+            </div>
+            <div className = 'begin'>
+                <h4>Let's Begin!</h4>
+                <p>We'll need some basic information about you. Help us get to know your body and your needs so that we can design the diet that achieves your goals.</p>
+            </div>
+            <MyLink to='/Biometrics'>
+            <button className = 'continue'>Continue</button>
+            </MyLink> 
+        </WelcomeContainer>
+    )
+}
+
+const mapStateToProps = state => ({
+    currentUser: state.userState.currentUser
+})
+export default connect(mapStateToProps)(WelcomePage);
 
 const WelcomeContainer = styled.div`
     display: flex;
@@ -59,38 +89,3 @@ const WelcomeContainer = styled.div`
 const MyLink = styled(Link) `
     text-decoration: none;
 `
-
-
-const WelcomePage = ({getUser, currentUser}) => {
-    console.log(currentUser)
-    useEffect(()=>{
-        getUser()
-    },[])
-
-    return (
-        <WelcomeContainer>
-            <div className = 'welcome'>
-                {/* Fill in the name with the endpoints later */}
-                <h3>Welcome !</h3>
-                <h3 className="name">{currentUser.name}</h3>
-            </div>
-            <div className = 'need'>
-                <h4>What You'll Need</h4>
-                <p>Food Scale</p>
-                <p>Body Weight Scale</p>
-            </div>
-            <div className = 'begin'>
-                <h4>Let's Begin!</h4>
-                <p>We'll need some basic information about you. Help us get to know your body and your needs so that we can design the diet that achieves your goals.</p>
-            </div>
-            <MyLink to='/Biometrics'>
-            <button className = 'continue'>Continue</button>
-            </MyLink> 
-        </WelcomeContainer>
-    )
-}
-
-const mapStateToProps = state => ({
-    currentUser: state.userState.currentUser
-})
-export default connect(mapStateToProps,{ getUser })(WelcomePage);
