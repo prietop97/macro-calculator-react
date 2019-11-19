@@ -1,120 +1,6 @@
-import React,{useState} from 'react';
+import React from 'react';
 import styled from 'styled-components';
-// import useForm from '../Utils/useForm';
 import {month, days, year, feets, inches}from './data.js';
-import { Link } from 'react-router-dom';
-
-
-const BioFormContainer = styled.div`
-    height: 60%;
-    width: 100%;
-    h2 {
-    font-size: 4rem;
-    width: 100%;
-    }
-
-    form {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        margin: 0 auto;
-        width: 100%;
-
-        .birthdate {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            width: 100%;
-            height: 20%;
-            
-            h3 {
-                display: flex;
-                justify-content: flex-start;
-                // padding-left: 2%;
-                font-size: 2rem;
-            }
-            .birthdate-inputs {
-                display: flex;
-                justify-content: center;
-
-            select {
-                display: flex;
-                width: 33%;
-                padding: 1% 1%;
-                margin: 0 auto;
-            }
-            }
-        }
-        .height{
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            width: 67%;
-            height: 20%;
-
-            h3 {
-                display: flex;
-                justify-content: flex-start;
-                font-size: 2rem;
-            }
-            .height-inputs {
-                display: flex;
-                width:  100%;
-                jsutify-content: space-between;
-                
-    
-
-                .left {
-                    width: 49.5%;
-                    margin-right: 0.5%;
-                    padding: 1% 1%;
-                }
-                .right {
-                    width: 49.5%;
-                    margin-right: 0.5%; 
-                    padding: 1.5% 1%;
-                    
-                }
-            }
-        }
-        .single-line {
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            width: 100%;
-            height: 40%;
-            margin: 0 auto;
-           
-
-            h3 {
-                display: flex;
-                justify-content: flex-start;
-                font-size: 2rem;
-                
-            }
-            .input, select {
-                display: flex; 
-                justify-content: flex-start; 
-                width: 100%;
-                padding: 1% 1%;
-                margin: 0 auto;
-            }   
-            
-        }
-        .continue {
-            display: flex;
-            justify-content: center;
-            border: none;
-            width: 100%;
-            background: white;
-            border-radius: 4px;
-            border: #db7c1e solid 1px;
-            padding: 1%;
-        }
-    }
-`
-
-
 
 const BioForm = (props) => {
 
@@ -199,5 +85,116 @@ const BioForm = (props) => {
     )
 
 }
+
+
+
+const BioFormContainer = styled.div`
+    height: 60%;
+    width: 100%;
+    h2 {
+    font-size: 4rem;
+    width: 100%;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: 0 auto;
+        width: 100%;
+
+        .birthdate {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 100%;
+            height: 20%;
+            
+            h3 {
+                display: flex;
+                justify-content: flex-start;
+                // padding-left: 2%;
+                font-size: 2rem;
+            }
+            .birthdate-inputs {
+                display: flex;
+                justify-content: center;
+
+            select {
+                display: flex;
+                width: 33%;
+                padding: 1% 1%;
+                margin: 0 auto;
+            }
+            }
+        }
+        .height{
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            width: 67%;
+            height: 20%;
+
+            h3 {
+                display: flex;
+                justify-content: flex-start;
+                font-size: 2rem;
+            }
+            .height-inputs {
+                display: flex;
+                width:  100%;
+                justify-content: space-between;
+                
+    
+
+                .left {
+                    width: 49.5%;
+                    margin-right: 0.5%;
+                    padding: 1% 1%;
+                }
+                .right {
+                    width: 49.5%;
+                    margin-right: 0.5%; 
+                    padding: 1.5% 1%;
+                    
+                }
+            }
+        }
+        .single-line {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            width: 100%;
+            height: 40%;
+            margin: 0 auto;
+           
+
+            h3 {
+                display: flex;
+                justify-content: flex-start;
+                font-size: 2rem;
+                
+            }
+            .input, select {
+                display: flex; 
+                justify-content: flex-start; 
+                width: 100%;
+                padding: 1% 1%;
+                margin: 0 auto;
+            }   
+            
+        }
+        .continue {
+            display: flex;
+            justify-content: center;
+            border: none;
+            width: 100%;
+            background: white;
+            border-radius: 4px;
+            border: #db7c1e solid 1px;
+            padding: 1%;
+        }
+    }
+`
 
 export default BioForm;

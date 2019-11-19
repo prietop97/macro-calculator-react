@@ -1,5 +1,7 @@
 import React from 'react';
 import { Route , Switch } from "react-router-dom";
+
+import PrivateRoute from "./Utils/PrivateRoute"
 import Dashboard from './Components/Dashboard';
 import BioForm from './Components/BioForm';
 import Header from './Components/Header';
@@ -14,7 +16,7 @@ function App() {
     <div>
       <Header />
       <Switch>
-        <Route exact path="/Dashboard" component={Dashboard} />
+        <PrivateRoute exact path="/Dashboard" component={Dashboard} />
         <Route path = "/Biometrics" component = {BioForm} />
         <Route path = "/Login" component = {Login} />
         <Route path = "/SignUp" component = {SignUp} />

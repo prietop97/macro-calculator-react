@@ -3,7 +3,7 @@ import axios from "axios"
 const axiosWithAuth = () => {
     const token = localStorage.getItem("token")
     return axios.create({
-        baseURL: "WHATEVER BACKEND URL",
+        baseURL: "Need A URL",
         headers: {
             Authorization: token
         }
