@@ -11,7 +11,7 @@ const initialValues = {
     height: "",
     weight: "",
     activity_factor: "",
-    meals_per_day: "",
+    meals_per_day: "", 
     snacks_per_day: "",
     goal_multiplier: ""
 }
@@ -105,6 +105,7 @@ const BioFormContainer = styled.div`
     h2 {
     font-size: 4rem;
     width: 100%;
+    font-family: 'Raleway', sans-serif;
     }
 
     form {
@@ -126,6 +127,7 @@ const BioFormContainer = styled.div`
                 justify-content: flex-start;
                 // padding-left: 2%;
                 font-size: 2rem;
+                font-family: 'Raleway', sans-serif;
             }
             .birthdate-inputs {
                 display: flex;
@@ -150,6 +152,7 @@ const BioFormContainer = styled.div`
                 display: flex;
                 justify-content: flex-start;
                 font-size: 2rem;
+                font-family: 'Raleway', sans-serif;
             }
             .height-inputs {
                 display: flex;
@@ -184,6 +187,7 @@ const BioFormContainer = styled.div`
                 display: flex;
                 justify-content: flex-start;
                 font-size: 2rem;
+                font-family: 'Raleway', sans-serif;
                 
             }
             .input, select {
@@ -204,6 +208,7 @@ const BioFormContainer = styled.div`
             border-radius: 4px;
             border: #db7c1e solid 1px;
             padding: 1%;
+            font-family: 'Raleway', sans-serif;
         }
     }
 `

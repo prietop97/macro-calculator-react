@@ -34,6 +34,9 @@ export default function Footer() {
       <Link to='/WelcomePage'>
       <h1 className='ui left'>WelcomePage</h1>
       </Link> 
+      <Link to='/CalculatedPage'>
+        <h1 className='ui left'>CalculatedPage</h1>
+      </Link>
       </div>
     </header>
   );

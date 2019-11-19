@@ -46,9 +46,11 @@ const WelcomeContainer = styled.div`
         justify-content: flex-start;
         h3 {
             font-size: 2.5rem; 
+            font-family: 'Raleway', sans-serif;
         }
         .name{
             margin-left: 2%;
+            font-family: 'Raleway', sans-serif;
         }
     }
     .need {
@@ -56,6 +58,7 @@ const WelcomeContainer = styled.div`
 
         h4 {
             font-size: 2rem;
+            font-family: 'Raleway', sans-serif;
         }
         p {
             font-size: 1.7rem;
@@ -66,10 +69,12 @@ const WelcomeContainer = styled.div`
         padding-left: 45%;
         h4{
             font-size: 2rem;
+            font-family: 'Raleway', sans-serif;
         }
         p {
             font-size: 1.7rem;
             color: grey;
+            font-family: 'Raleway', sans-serif;
         }
     }
     .continue{
@@ -82,6 +87,7 @@ const WelcomeContainer = styled.div`
         border: #db7c1e solid 1px;
         padding: 1%;
         text-decoration: none;
+        font-family: 'Raleway', sans-serif;
     }
 
 `

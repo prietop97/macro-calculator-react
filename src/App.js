@@ -10,6 +10,7 @@ import Login from './Components/Login';
 import SignUp from './Components/SignUp';
 import WelcomePage from './Components/WelcomePage';
 import SnacksAndMeals from './Components/SnacksAndMeals';
+import CalculatedPage from './Components/CalculatedPage';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path = "/SignUp" component = {SignUp} />
         <Route path = "/WelcomePage" component = {WelcomePage} />
         <Route path = "/SnacksAndMeals" component = {SnacksAndMeals} />
+        
       </Switch>
       <Footer>
       </Footer>

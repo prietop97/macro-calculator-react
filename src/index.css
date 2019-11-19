@@ -8,23 +8,10 @@ html{
   font-size: 62.5%;
 }
 
-.flexHeader {
-  display: flex;
-  justify-content: space-evenly;
-  padding: 10%;
-  background: gray;
-}
+
 
 .login {
   text-align: center;
   border: 2px solid black;
   padding: 5%;
-}
-
-h1 {
-  font-family: 'Raleway', sans-serif;
-}
-
-p {
-  font-family: 'Raleway', sans-serif;
 }
