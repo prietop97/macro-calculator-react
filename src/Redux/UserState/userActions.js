@@ -8,6 +8,11 @@ export const SIGN_UP_START = "SIGN_UP_START"
 export const SIGN_UP_SUCCESS = "SIGN_UP_SUCCESS"
 export const SIGN_UP_FAILED = "SIGN_UP_FAILED"
 
+export const GET_USER_START = "GET_USER_START"
+export const GET_USER_SUCCESS = "SIGN_UP_SUCCESS"
+export const GET_USER_FAILED = "SIGN_UP_FAILED"
+
+
 export const login = (userInfo) => dispatch => {
     dispatch({type: LOGIN_START});
     axiosWithAuth()
@@ -19,4 +24,20 @@ export const login = (userInfo) => dispatch => {
         .catch(()=>dispatch({type:LOGIN_FAILED}))
 }
 
-export const signupFirstStep = (userInfo) => ({SIGN_UP_START})
+export const signUp = (userInfo) => dispatch => {
+    dispatch({type: SIGN_UP_START});
+    axiosWithAuth()
+        .post("/register", userInfo)
+        .then(res=>{
+            dispatch({type:SIGN_UP_SUCCESS})
+        })
+        .catch(()=>dispatch({type:SIGN_UP_FAILED}))
+}
+
+export const getUser = () => dispatch => {
+    dispatch({type: GET_USER_START});
+    axiosWithAuth()
+        .get("/")
+        .then(res=>console.log(res))
+        .catch(err=>console.log(err))
+}

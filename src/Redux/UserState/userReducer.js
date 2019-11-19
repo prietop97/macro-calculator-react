@@ -3,33 +3,16 @@ import {
     LOGIN_FAILED,
     LOGIN_SUCCESS,
     SIGN_UP_START,
-    SIGN_UP_FAILED,
-    SIGN_UP_SUCCESS
+    SIGN_UP_SUCCESS,
+    SIGN_UP_FAILED
 } from "./userActions"
 
 const initialState = {
     error: null,
     isFetching: false,
     currentUser: {
-        username: "Whatever",
-        password: "whatever",
-        stats:{
-            age: 22,
-            height: {
-                feet: 5,
-                inches: 9
-            },
-            activityLevel: "moderate",
-            weight: 150,
-            gender: "male",
-            goal: "maintain"
-        },
-        numberOfMeals: {
-            snacks: 0,
-            meals: 0,
-        }
+        name: "John Doe"
     },
-
 }
 
 export const userReducer = (state = initialState , {type , payload}) => {
@@ -38,37 +21,44 @@ export const userReducer = (state = initialState , {type , payload}) => {
             return {
                 ...state,
                 isFetching: true,
-                error: null
+                error: null,
+                currentUser: {}
             }
         case LOGIN_SUCCESS:
             return {
                 ...state,
                 error: null,
-                isFetching: false
+                isFetching: false,
+                currentUser: payload
             }
         case LOGIN_FAILED:
             return {
                 ...state,
                 error: "Wrong Email Or Password",
-                isFetching: false
+                isFetching: false,
+                currentUser: {}
             }
         case SIGN_UP_START:
             return {
                 ...state,
-                currentUser: payload
-        }
+                error: null,
+                isFetching: true,
+                currentUser: {}
+            }
         case SIGN_UP_SUCCESS:
             return {
                 ...state,
                 error: null,
-                isFetching: false
+                isFetching: false,
+                currentUser: {},
             }
         case SIGN_UP_FAILED:
             return {
                 ...state,
-                error: "Wrong Email Or Password",
-                isFetching: false
-        }
+                error: payload,
+                isFetching: true,
+                currentUser: {}
+            }
         default:
             return state
     }
