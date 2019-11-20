@@ -20,7 +20,7 @@ export const login = (userInfo,history) => dispatch => {
         .post("https://bw-macro-calculator.herokuapp.com/auth/login",userInfo)
         .then(res=>{
             localStorage.setItem("token",res.data.token)
-            dispatch({type:LOGIN_SUCCESS , payload: res.data.username})
+            dispatch({type:LOGIN_SUCCESS , payload: res.data})
             history.push("/Dashboard")
         })
         .catch((err)=>console.log(err.message))

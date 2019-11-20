@@ -1,6 +1,7 @@
 import React,{ useState } from 'react';
-import { connect } from "react-redux"
-import { login } from "../Redux/UserState/userActions"
+import { connect } from "react-redux";
+import { login } from "../Redux/UserState/userActions";
+import styled from 'styled-components';
 
 const Login = ({login,history}) => {
     const [formValues,setFormValues] = useState({username: "" , password: ""})
@@ -15,21 +16,42 @@ const Login = ({login,history}) => {
     }
 
         return (
-        <div className= 'login'>
+        <LoginContainer className= 'login'>
             <h1>Login </h1> 
             <form>
-            <h2>Username:</h2>
+                <h2>Username:</h2>
                 <input type='text' placeholder='Username' value={formValues.username} name="username" onChange={handleChange} />
             </form>
             <form>
-            <h2>Password:</h2>
+                <h2>Password:</h2>
                 <input type='password' placeholder='Password' value={formValues.password} name="password" onChange={handleChange} />
             </form>
             <button onClick={onSubmit}>Submit</button>
-        </div>
+        </LoginContainer>
 
     )
 
 }
 
 export default connect(null,{login})(Login)
+
+const LoginContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 60vh;
+    width: 100%;
+    
+    h1{
+        display: flex;
+        justify-content: center;
+    }
+    
+    form{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        width: 80%;
+
+    }
+`

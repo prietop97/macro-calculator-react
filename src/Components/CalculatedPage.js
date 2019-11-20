@@ -1,6 +1,6 @@
 import React from 'react';
 // import styled from 'styled-components';
-import BioForm from './BioForm';
+
 
 const CalculatedPage = props => {
     console.log(props);
@@ -11,12 +11,12 @@ const CalculatedPage = props => {
                 <div>
                     <h3>Daily Macros: </h3>
                     <div>
-                        <p>Protien: {}</p>
-                        <p>Fat: {}</p>
-                        <p>Carbs: {}</p>
+                        <p>Protien: {"88g"}</p>
+                        <p>Fat: {"16g"}</p>
+                        <p>Carbs: {"34g"}</p>
                     </div>
                     <h3>Total Daily Calories: </h3>
-                        <p>{}</p>
+                        <p>{"1800g"}</p>
                 </div>
 
             </div>

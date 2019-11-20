@@ -20,7 +20,6 @@ const initialValues = {
 const BioForm = (props) => {
     const [formValues , setFormValues] = useState(initialValues)
     const [height , setHeight] = useState({feet: "" , inches: ""})
-    const [mealsAndSnacks , setMealsAndSnacks] = useState({snacks: "" , month: "" , year: ""})
 
     const submitHandler = (e) => {
         e.preventDefault();

@@ -6,6 +6,7 @@ import {
     SEND_STATS_SUCCESS,
     SEND_STATS_FAILED
 } from "./userStatsActions"
+import { calculateStats } from "./userStatsActions"
 
 const initialState = {
     userStatsObj: {},
@@ -27,14 +28,15 @@ export const userStatsReducer = (state = initialState , {type , payload}) => {
                 userStats: {}
             }
         case FETCH_STATS_SUCCESS:
+            const cal = calculateStats(payload)
             return {
                 ...state,
                 isFetching: false,
                 userStatsObj: payload,
-                totalCalories: 0,
-                proteinGrams: 0,
-                carbsGrams: 0,
-                fatsGrams: 0
+                totalCalories: cal,
+                proteinGrams: cal * 0.075,
+                carbsGrams: cal * 0.1,
+                fatsGrams: cal * 0.033
             }
         case FETCH_STATS_FAILED:
             return {

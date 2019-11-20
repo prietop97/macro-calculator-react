@@ -12,12 +12,23 @@ export const sendStats = (info) => dispatch => {
     dispatch({type:SEND_STATS_START})
     axiosWithAuth()
         .post("/info",info)
+        .then(res=>dispatch({type: SEND_STATS_SUCCESS , payload: res.data}))
         .catch(err=>console.log(err))
-    dispatch({type: SEND_STATS_SUCCESS , payload: info})
 }
 
-// export const fetchStats = (info) => dispatch => {
-//     dispatch
-// }
+export const fetchStats = (id) => dispatch => {
+    dispatch({type:FETCH_STATS_START})
+    axiosWithAuth()
+        .get(`/info/${id}`)
+        .then(res=>dispatch({type: FETCH_STATS_SUCCESS , payload: res.data}))
+        .catch(err=>console.log(err))
+}
+
+export const calculateStats = (user) => {
+    const number = 0
+    (user.gender === "male") ? number = 66 : number = 655
+    const BMR = number + (6.23 * user.height) + (12.7 * user.height) - (6.8 * 21)
+    return Math.floor(BMR * user.activity_factor * user.goal_multiplier)
+}
 
 

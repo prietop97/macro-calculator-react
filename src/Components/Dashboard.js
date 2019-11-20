@@ -1,8 +1,15 @@
-import React from 'react'
+import React,{ useEffect } from 'react'
 import { connect } from "react-redux"
+import { fetchStats } from "../Redux/UserStats/userStatsActions"
 
 
 function Dashboard(props) {
+    console.log(props.userProfile)
+
+
+    useEffect(()=>{
+        props.fetchStats(props.userProfile.user_id)
+    },[])
 
     return (
         <div className='styled'>
@@ -12,9 +19,9 @@ function Dashboard(props) {
             <h1> November 18, 2019</h1>
             </div>
             <div>
-                <p>Protein: {}</p>
-                <p>Fats: {}</p>
-                <p>Carbohydrates: {}</p>
+                <p>Protein: {"250g"}</p>
+                <p>Fats: {"30g"}</p>
+                <p>Carbohydrates: {"20g"}</p>
             </div>
             <h1>Total Daily Calories</h1>
                 <p>{}</p>
@@ -32,36 +39,36 @@ function Dashboard(props) {
                         <div>
                             <div>
                             <h3>Meal 1:</h3>
-                            <p>Protein: {}</p>
-                            <p>Fats: {}</p>
-                            <p>Carbohydrates: {}</p>
+                            <p>Protein: {"15g"}</p>
+                            <p>Fats: {"5g"}</p>
+                            <p>Carbohydrates: {"20g"}</p>
                             </div>
                             {/* img goes here */}
                         </div>
                         <div>
                             <div>
                             <h3>Meal 1:</h3>
-                            <p>Protein: {}</p>
-                            <p>Fats: {}</p>
-                            <p>Carbohydrates: {}</p>
+                            <p>Protein: {"15g"}</p>
+                            <p>Fats: {"34g"}</p>
+                            <p>Carbohydrates: {"12g"}</p>
                             </div>
                             {/* img goes here */}
                         </div>
                         <div>
                             <div>
                             <h3>Meal 1:</h3>
-                            <p>Protein: {}</p>
-                            <p>Fats: {}</p>
-                            <p>Carbohydrates: {}</p>
+                            <p>Protein: {"19g"}</p>
+                            <p>Fats: {"64g"}</p>
+                            <p>Carbohydrates: {"22g"}</p>
                             </div>
                             {/* img goes here */}
                         </div>
                         <div>
                             <div>
                             <h3>Meal 1:</h3>
-                            <p>Protein: {}</p>
-                            <p>Fats: {}</p>
-                            <p>Carbohydrates: {}</p>
+                            <p>Protein: {"17g"}</p>
+                            <p>Fats: {"2g"}</p>
+                            <p>Carbohydrates: {"99g"}</p>
                             </div>
                             {/* img goes here */}
                         </div>
@@ -75,4 +82,4 @@ function Dashboard(props) {
 const mapStateToProps = state => ({
     userProfile: state.userState.currentUser
 })
-export default connect(mapStateToProps)(Dashboard)
+export default connect(mapStateToProps,{fetchStats})(Dashboard)
