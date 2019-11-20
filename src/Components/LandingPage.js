@@ -1,10 +1,13 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
+import Header from './Header';
 
 const LandingPage = () => {
 
     return(
+        <>
+        <Header />
         <LandingPageContainer>
             <MyLink to="/Login">
                 <button className="log">Log In</button>
@@ -13,7 +16,7 @@ const LandingPage = () => {
                 <button>Create Account</button>
             </MyLink>
         </LandingPageContainer>       
-
+        </>
     )
 }
 

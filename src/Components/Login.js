@@ -2,6 +2,7 @@ import React,{ useState } from 'react';
 import { connect } from "react-redux";
 import { login } from "../Redux/UserState/userActions";
 import styled from 'styled-components';
+import Header from './Header';
 
 const Login = ({login,history}) => {
     const [formValues,setFormValues] = useState({username: "" , password: ""})
@@ -16,6 +17,8 @@ const Login = ({login,history}) => {
     }
 
     return (
+        <>
+        <Header />
         <LoginContainer className= 'login'>
             <h2>Login </h2> 
             <form>
@@ -28,7 +31,7 @@ const Login = ({login,history}) => {
             </form>
             <button onClick={onSubmit}>Submit</button>
         </LoginContainer>
-
+        </>
     )
 
 }
