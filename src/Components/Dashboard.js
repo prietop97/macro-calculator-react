@@ -2,6 +2,7 @@ import React,{ useEffect } from 'react'
 import { connect } from "react-redux"
 import { fetchStats } from "../Redux/UserStats/userStatsActions"
 import {monthNames} from './data';
+import styled from 'styled-components';
 
 const Dashboard = ({userProfile, fetchStats, userInfo}) => {
     console.log(userProfile);
@@ -20,19 +21,30 @@ const Dashboard = ({userProfile, fetchStats, userInfo}) => {
     
 
     return (
-        <div className='styled'>
+        <DashboardContainer>
             <div>
-            <h1> Daily Macronutrients</h1>
-            <h1>{`${month} ${day}, ${year}`}</h1>
+                <div className="stats">
+                
+                    <h1> Daily Macronutrients</h1>
+                    <div className="paragraphs">
+                        <p>Protein: {userInfo.proteinGrams}g</p>
+                        <p>Fats: {userInfo.fatsGrams}g</p>
+                        <p>Carbohydrates: {userInfo.carbsGrams}g</p>
+                    </div>
+                    <h1>Total Daily Calories</h1>
+                    <div className="paragraphs">
+                        <p>{userInfo.totalCalories}cal</p>
+                    </div>
+                </div> 
+                <div className="month">
+                    <h1>{`${month} ${day}, ${year}`}</h1> 
+                </div>
+            
+            
             </div>
-            <div>
-                <p>Protein: {userInfo.proteinGrams}g</p>
-                <p>Fats: {userInfo.fatsGrams}g</p>
-                <p>Carbohydrates: {userInfo.carbsGrams}g</p>
-            </div>
-            <h1>Total Daily Calories</h1>
-                <p>{userInfo.totalCalories}cal</p>
-                <div>
+            
+            
+                <div className="planning">
                     <div className='daysColumn'>
                         <h1 className='orange'>Monday</h1>
                         <h1>Tuesday</h1>
@@ -81,7 +93,7 @@ const Dashboard = ({userProfile, fetchStats, userInfo}) => {
                         </div>
                     </div>
                 </div>
-        </div>
+        </DashboardContainer>
     )
 }
 
@@ -91,3 +103,66 @@ const mapStateToProps = state => ({
     userInfo: state.userStats
 })
 export default connect(mapStateToProps,{fetchStats})(Dashboard)
+
+const DashboardContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    height: 60vh;
+    width: 100%;
+    padding: 0 5%;
+
+    div{
+        display: flex;
+
+        .stats{
+            display: flex;
+            justify-content: flex-start;
+            flex-direction: column;
+            width: 60%
+
+            
+            h1{
+                font-size: 2.5rem;
+                font-family: 'Raleway', sans-serif;
+                padding-bottom: 2%;
+            }
+            .paragraphs{
+                display: flex;
+                justify-content: space-evenly;
+                font-size: 2rem;
+                color: #4F4F4F;
+                padding-bottom: 2%;
+
+            }
+        }
+        .month{
+            display: flex;
+            justify-content: flex-end;
+            width: 20%;
+        }
+    }
+    .planning{ 
+        display: flex;
+        flex-direction: row;
+
+        .daysColumn{
+            display: flex;
+            flex-direction: column;
+            width: 30%;
+
+            h1{
+                font-size: 3rem;
+                font-family: 'Raleway', sans-serif;
+
+                &:hover{
+                    color: #DB7C1E;
+                }
+            }
+        }
+        .fourImages{
+            display: flex;
+            flex-direction: column;
+            width: 60%;
+        }
+    }    
+`
