@@ -30,8 +30,22 @@ export const fetchStats = (id) => dispatch => {
 }
 
 export const calculateStats = (user) => {
+    let day = ""
+    let month = ""
+    if(user.birthdate_day <= 9){
+        day = `0${user.birthdate_day}`
+    }else{
+        day = `${user.birthdate_day}`
+    }
+
+    if(user.birthdate_month <= 9){
+        month = `0${user.birthdate_month}`
+    }else{
+        month = `${user.birthdate_month}`
+    }
+
     let currentDate = new Date()
-    let birthDate = new Date(`${user.birthdate_month}/${user.birthdate_day}/${user.birthdate_year}`)
+    let birthDate = new Date(`${month}/${day}/${user.birthdate_year}`)
     let oneYear = 1000 * 60 * 60 * 24 * 365
     let difference = Math.floor((currentDate - birthDate) / oneYear)
     let numberBMR = 0
@@ -40,12 +54,11 @@ export const calculateStats = (user) => {
     }else{
         numberBMR = 655
     }
-    const BMR = numberBMR + (6.23 * user.height) + (12.7 * user.height) - (6.8 * 21)
+    const BMR = numberBMR + (6.23 * user.height) + (12.7 * user.height) - (6.8 * difference)
     return Math.floor(BMR * user.activity_factor * user.goal_multiplier)
 }
 
 export const mealPlan = (proteinGrams,carbsGrams,fatsGrams,userInfo) => {
-    console.log("user Info", userInfo.carbsGrams);
     let mealProtein = proteinGrams
     let mealCarbs = carbsGrams
     let mealFats = fatsGrams
