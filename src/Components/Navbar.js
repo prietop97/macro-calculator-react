@@ -1,6 +1,5 @@
-import React,{useState , useEffect} from 'react'
+import React,{useState} from 'react'
 import styled from "styled-components"
-import { findByLabelText } from '@testing-library/dom'
 
 export default function Navbar() {
     const [toggleMenu, setToggleMenu] = useState(false)
