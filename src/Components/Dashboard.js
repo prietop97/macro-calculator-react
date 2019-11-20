@@ -3,6 +3,7 @@ import { connect } from "react-redux"
 import { fetchStats } from "../Redux/UserStats/userStatsActions"
 import {monthNames} from './data';
 import styled from 'styled-components';
+import Navbar from "./Navbar"
 
 const Dashboard = ({userProfile, fetchStats, userInfo}) => {
     console.log(userProfile);
@@ -21,6 +22,8 @@ const Dashboard = ({userProfile, fetchStats, userInfo}) => {
     
 
     return (
+        <>
+        <Navbar />
         <DashboardContainer>
             <div>
                 <div className="stats">
@@ -94,6 +97,7 @@ const Dashboard = ({userProfile, fetchStats, userInfo}) => {
                     </div>
                 </div>
         </DashboardContainer>
+        </>
     )
 }
 

@@ -15,7 +15,7 @@ import LandingPage from './Components/LandingPage';
 function App() {
   return (
     <div>
-      <Header />
+      {/* <Header /> */}
       <Switch>
         <Route exact path="/" component={LandingPage} />
         <PrivateRoute exact path="/Dashboard" component={Dashboard} />
