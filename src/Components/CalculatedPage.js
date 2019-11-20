@@ -48,7 +48,8 @@ export default connect(mapStateToProps,{})(CalculatedPage);
 const CalculatedContainer = styled.div`
     display: flex;
     flex-direction: column;
-    height: 60vh;
+    justify-content: space-around;
+    height: 90rem;
     width: 100%;
     padding: 0 5%;
 
@@ -94,5 +95,20 @@ const CalculatedContainer = styled.div`
         font-size: 4rem;
         color: #948F8F;
         font-family: 'Raleway', sans-serif ;
+    }
+    .continue{
+        display: flex;
+        justify-content: center;
+        border: none;
+        width: 100%;
+        background: white;
+        border-radius: 4px;
+        border: #db7c1e solid 1px;
+        padding: 1%;
+        font-family: 'Raleway', sans-serif;
+
+        &:hover{
+            background: #db7c1e;
+        }
     }
 `
