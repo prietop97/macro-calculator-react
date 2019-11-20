@@ -2,10 +2,6 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 
-//components
-import Login from './Login';
-import SignUp from './SignUp';
-
 const LandingPage = () => {
 
     return(

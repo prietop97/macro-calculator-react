@@ -1,22 +1,23 @@
 import React from 'react';
-// import styled from 'styled-components';
+import styled from 'styled-components';
+import { connect } from 'react-redux'
 
 
-const CalculatedPage = props => {
-    console.log(props);
+const CalculatedPage = ({userInfo}) => {
+    console.log(userInfo);
     return (
-        <div>
+        <CalculatedContainer>
             <h3>Based on the information given, your daily intake of macronutrients has been calculated for you.</h3>
             <div>
                 <div>
                     <h3>Daily Macros: </h3>
                     <div>
-                        <p>Protien: {"88g"}</p>
-                        <p>Fat: {"16g"}</p>
-                        <p>Carbs: {"34g"}</p>
+                        <p>Protien: {userInfo.proteinGrams}g</p>
+                        <p>Fat: {userInfo.fatsGrams}g</p>
+                        <p>Carbs: {userInfo.carbsGrams}g</p>
                     </div>
                     <h3>Total Daily Calories: </h3>
-                        <p>{"1800g"}</p>
+                        <p>{userInfo.totalCalories}cal</p>
                 </div>
 
             </div>
@@ -26,8 +27,20 @@ const CalculatedPage = props => {
 
             {/* <h2>We will now curate a weekly meal plan based on your numbers. Your daily macronutrients will be automatically calculated between the meals you choose per day.</h2> */}
             <button className='continue'>Continue</button>
-        </div>
+        </CalculatedContainer>
     )
 }
 
-export default CalculatedPage;
+const mapStateToProps = state => ({
+    userInfo: state.userStats
+})
+export default connect(mapStateToProps,{})(CalculatedPage);
+
+const CalculatedContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    padding-left: 30%;
+    font-size: 2rem;
+`

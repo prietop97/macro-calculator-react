@@ -4,7 +4,7 @@ import { connect } from "react-redux"
 import { signUp } from "../Redux/UserState/userActions"
 
 const SignUp = ({signUp , history}) => {
-    const [formValues,setFormValues] = useState({username: "" , password: ""})
+    const [formValues,setFormValues] = useState({username: "" , password: "" , fullname: ""})
 
     const handleChange = (e) => {
         setFormValues({...formValues,[e.target.name]:e.target.value})
