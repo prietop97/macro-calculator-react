@@ -20,12 +20,12 @@ function App() {
       <Switch>
         <Route exact path="/" component={LandingPage} />
         <PrivateRoute exact path="/Dashboard" component={Dashboard} />
-        <Route path = "/Biometrics" component = {BioForm} />
+        <PrivateRoute exact path = "/Biometrics" component = {BioForm} />
         <Route path = "/Login" component = {Login} />
         <Route path = "/SignUp" component = {SignUp} />
-        <Route path = "/WelcomePage" component = {WelcomePage} />
-        <Route path = "/SnacksAndMeals" component = {SnacksAndMeals} />
-        <Route path = "/CalculatedPage" component = {CalculatedPage} />
+        <PrivateRoute exact path = "/WelcomePage" component = {WelcomePage} />
+        <PrivateRoute exact path = "/SnacksAndMeals" component = {SnacksAndMeals} />
+        <PrivateRoute exact path = "/CalculatedPage" component = {CalculatedPage} />
       </Switch>
       <Footer>
       </Footer>
