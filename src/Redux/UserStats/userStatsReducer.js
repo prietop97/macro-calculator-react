@@ -28,15 +28,15 @@ export const userStatsReducer = (state = initialState , {type , payload}) => {
                 userStats: {}
             }
         case FETCH_STATS_SUCCESS:
-            const cal = calculateStats(payload)
+            const cals = calculateStats(payload)
             return {
                 ...state,
                 isFetching: false,
                 userStatsObj: payload,
-                totalCalories: cal,
-                proteinGrams: cal * 0.075,
-                carbsGrams: cal * 0.1,
-                fatsGrams: cal * 0.033
+                totalCalories: cals,
+                proteinGrams: Math.floor(cals * 0.075),
+                carbsGrams: Math.floor(cals * 0.1),
+                fatsGrams: Math.floor(cals * 0.033)
             }
         case FETCH_STATS_FAILED:
             return {
@@ -53,11 +53,16 @@ export const userStatsReducer = (state = initialState , {type , payload}) => {
                 userStatsObj: {}
             }
         case SEND_STATS_SUCCESS:
+            const cal = calculateStats(payload)
             return{
                 ...state,
                 isFetching: false,
                 error: null,
-                userStatsObj: payload
+                userStatsObj: payload,
+                totalCalories: cal,
+                proteinGrams: Math.floor(cal * 0.075),
+                carbsGrams: Math.floor(cal * 0.1),
+                fatsGrams: Math.floor(cal * 0.033)
             }
         case SEND_STATS_FAILED:
             return{

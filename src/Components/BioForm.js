@@ -5,6 +5,7 @@ import { connect } from "react-redux"
 import { sendStats } from "../Redux/UserStats/userStatsActions";
 
 
+
 const initialValues = {
     gender: "",
     height: "",
@@ -23,7 +24,7 @@ const BioForm = (props) => {
 
     const submitHandler = (e) => {
         e.preventDefault();
-        props.sendStats(formValues)
+        props.sendStats(formValues,props.history)
     }
     console.log(formValues)
 
@@ -46,15 +47,6 @@ const BioForm = (props) => {
         setHeight({...height, [e.target.name] : Number(e.target.value)})
         const totalHeight = height.feet * 12 + height.inches
         setFormValues({...formValues, height: Number(totalHeight)})
-    }
-
-    const changeAge = () => {
-        let today = new Date()
-        let arr = [formValues.birthdate_month,formValues.birthdate_day,formValues.birthdate_year]
-        let birthDate = new Date(arr.join("/"))
-        let oneYear = 1000 * 60 * 60 * 24 * 365
-        let difference = Math.floor((today - birthDate) / oneYear)
-        setFormValues({...formValues , age: difference })
     }
 
     return (
@@ -133,8 +125,9 @@ const BioForm = (props) => {
                     </select>
                 </div>    
                 </div>
-    
-                <button className='continue'>Continue</button>
+                
+                    <button className='continue'>Continue</button>
+                
             </form>
             
         </BioFormContainer>
