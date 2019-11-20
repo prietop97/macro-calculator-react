@@ -5,7 +5,6 @@ import PrivateRoute from "./Utils/PrivateRoute"
 import Dashboard from './Components/Dashboard';
 import BioForm from './Components/BioForm';
 import Header from './Components/Header';
-import Footer from './Components/Footer';
 import Login from './Components/Login';
 import SignUp from './Components/SignUp';
 import WelcomePage from './Components/WelcomePage';
@@ -27,8 +26,6 @@ function App() {
         <PrivateRoute exact path = "/SnacksAndMeals" component = {SnacksAndMeals} />
         <PrivateRoute exact path = "/CalculatedPage" component = {CalculatedPage} />
       </Switch>
-      <Footer>
-      </Footer>
     </div>
   );
 }
