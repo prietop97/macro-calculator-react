@@ -7,6 +7,7 @@ import {
     SEND_STATS_FAILED
 } from "./userStatsActions"
 import { calculateStats } from "./userStatsActions"
+import { mealPlan } from "./userStatsActions"
 
 const initialState = {
     userStatsObj: {},
@@ -15,8 +16,10 @@ const initialState = {
     totalCalories: "",
     proteinGrams : "",
     carbsGrams : "",
-    fatsGrams : ""
+    fatsGrams : "",
+    Macros: {}
 }
+
 
 export const userStatsReducer = (state = initialState , {type , payload}) => {
     switch(type){
@@ -27,16 +30,18 @@ export const userStatsReducer = (state = initialState , {type , payload}) => {
                 error: null,
                 userStats: {}
             }
-        case FETCH_STATS_SUCCESS:
-            const cals = calculateStats(payload)
-            return {
-                ...state,
-                isFetching: false,
-                userStatsObj: payload,
+            case FETCH_STATS_SUCCESS:
+                const cals = calculateStats(payload)
+                const Macro = mealPlan(state.proteinGrams,state.carbsGrams,state.fatsGrams,payload)
+                return {
+                    ...state,
+                    isFetching: false,
+                    userStatsObj: payload,
                 totalCalories: cals,
                 proteinGrams: Math.floor(cals * 0.075),
                 carbsGrams: Math.floor(cals * 0.1),
-                fatsGrams: Math.floor(cals * 0.033)
+                fatsGrams: Math.floor(cals * 0.033),
+                Macros: Macro
             }
         case FETCH_STATS_FAILED:
             return {
@@ -53,7 +58,8 @@ export const userStatsReducer = (state = initialState , {type , payload}) => {
                 userStatsObj: {}
             }
         case SEND_STATS_SUCCESS:
-            const cal = calculateStats(payload)
+                const cal = calculateStats(payload)
+                const Macros = mealPlan(payload)
             return{
                 ...state,
                 isFetching: false,
@@ -62,7 +68,8 @@ export const userStatsReducer = (state = initialState , {type , payload}) => {
                 totalCalories: cal,
                 proteinGrams: Math.floor(cal * 0.075),
                 carbsGrams: Math.floor(cal * 0.1),
-                fatsGrams: Math.floor(cal * 0.033)
+                fatsGrams: Math.floor(cal * 0.033),
+                Macros: Macros
             }
         case SEND_STATS_FAILED:
             return{

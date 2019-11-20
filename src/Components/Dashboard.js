@@ -1,30 +1,37 @@
 import React,{ useEffect } from 'react'
 import { connect } from "react-redux"
 import { fetchStats } from "../Redux/UserStats/userStatsActions"
+import {monthNames} from './data';
 
+const Dashboard = ({userProfile, fetchStats, userInfo}) => {
+    console.log(userProfile);
 
-function Dashboard(props) {
-    console.log(props.userProfile)
-
+    const currentDate = new Date();
+    const year = currentDate.getFullYear()
+    const month = monthNames[currentDate.getMonth()]
+    const day = currentDate.getDate()
+    console.log(month)
+ 
 
     useEffect(()=>{
-        props.fetchStats(props.userProfile.user_id)
+        fetchStats(userProfile.user_id)
     },[])
+
+    
 
     return (
         <div className='styled'>
-            HELLO WORLD
             <div>
             <h1> Daily Macronutrients</h1>
-            <h1> November 18, 2019</h1>
+            <h1>{`${month} ${day}, ${year}`}</h1>
             </div>
             <div>
-                <p>Protein: {"250g"}</p>
-                <p>Fats: {"30g"}</p>
-                <p>Carbohydrates: {"20g"}</p>
+                <p>Protein: {userInfo.proteinGrams}g</p>
+                <p>Fats: {userInfo.fatsGrams}g</p>
+                <p>Carbohydrates: {userInfo.carbsGrams}g</p>
             </div>
             <h1>Total Daily Calories</h1>
-                <p>{}</p>
+                <p>{userInfo.totalCalories}cal</p>
                 <div>
                     <div className='daysColumn'>
                         <h1 className='orange'>Monday</h1>
@@ -80,6 +87,7 @@ function Dashboard(props) {
 
 
 const mapStateToProps = state => ({
-    userProfile: state.userState.currentUser
+    userProfile: state.userState.currentUser,
+    userInfo: state.userStats
 })
 export default connect(mapStateToProps,{fetchStats})(Dashboard)
