@@ -11,15 +11,15 @@ const WelcomePage = ({currentUser}) => {
             <div className = 'welcome'>
                 {/* Fill in the name with the endpoints later */}
                 <h3>Welcome </h3>
-                <h3 className="name">{currentUser.fullname}!</h3>
+                <h3 className="name"> {currentUser.fullname}!</h3>
             </div>
             <div className = 'need'>
-                <h4>What You'll Need</h4>
+                <h4>What you'll need</h4>
                 <p>Food Scale</p>
                 <p>Body Weight Scale</p>
             </div>
             <div className = 'begin'>
-                <h4>Let's Begin!</h4>
+                <h4>Let's begin!</h4>
                 <p>We'll need some basic information about you. Help us get to know your body and your needs so that we can design the diet that achieves your goals.</p>
             </div>
             <MyLink to='/Biometrics'>
@@ -43,51 +43,55 @@ const WelcomeContainer = styled.div`
     margin: 0 auto;
 
     .welcome {
+        display: flex;
         justify-content: flex-start;
+        flex-direction: row;
         h3 {
-            font-size: 2.5rem; 
+            font-size: 4rem; 
             font-family: 'Raleway', sans-serif;
         }
         .name{
-            margin-left: 2%;
+            margin-left: 0.4%;
             font-family: 'Raleway', sans-serif;
         }
     }
     .need {
-        padding-left: 20%;
 
         h4 {
-            font-size: 2rem;
+            font-size: 3rem;
             font-family: 'Raleway', sans-serif;
         }
         p {
-            font-size: 1.7rem;
+            font-size: 2.5rem;
             color: grey;
         }
     }
     .begin {
-        padding-left: 45%;
         h4{
-            font-size: 2rem;
+            font-size: 3rem;
             font-family: 'Raleway', sans-serif;
         }
         p {
-            font-size: 1.7rem;
+            font-size: 2.5rem;
             color: grey;
             font-family: 'Raleway', sans-serif;
+            width: 50%;
         }
     }
     .continue{
         display: flex;
         justify-content: center;
-        border: none;
         width: 100%;
-        background: #db7c1e;
+        background: white
         border-radius: 4px;
         border: #db7c1e solid 1px;
         padding: 1%;
-        text-decoration: none;
         font-family: 'Raleway', sans-serif;
+        margin-bottom: 2%;
+
+        &:hover{
+            background: #db7c1e;
+        }
     }
 
 `

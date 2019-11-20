@@ -87,7 +87,6 @@ const SignUpContainer = styled.div`
     button{
         display: flex;
         justify-content: center;
-        border: none;
         width: 100%;
         background: white;
         border-radius: 4px;
