@@ -1,4 +1,5 @@
 import React,{useState} from 'react';
+import Header from './Header';
 import styled from 'styled-components';
 import {month, days, year, feets, inches, meals} from './data.js';
 import { connect } from "react-redux"
@@ -49,6 +50,8 @@ const BioForm = (props) => {
     }
 
     return (
+        <>
+        <Header />
         <BioFormContainer className= 'login'>
             <h2>Personal Info:</h2>
             <form  onSubmit={submitHandler}> 
@@ -129,7 +132,7 @@ const BioForm = (props) => {
             </form>
             
         </BioFormContainer>
-
+        </>
     )
 
 }
