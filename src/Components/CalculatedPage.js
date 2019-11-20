@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import salmon from '../img/salmon.jpg';
+import { Link } from "react-router-dom"
 
 
 const CalculatedPage = ({userInfo}) => {
@@ -30,7 +31,7 @@ const CalculatedPage = ({userInfo}) => {
             
 
             <h1>We will now curate a weekly meal plan based on your numbers. Your daily macronutrients will be automatically calculated between the meals you choose per day.</h1>
-            <button className='continue'>Continue</button>
+            <Link to="/Dashboard"><button className='continue'>Continue</button></Link>
         </CalculatedContainer>
     )
 }
