@@ -38,7 +38,7 @@ const BioForm = (props) => {
         }else if(e.target.name === "gender"){
             setFormValues({...formValues,[e.target.name]:e.target.value})
         }  else {
-            setFormValues({...formValues,[e.target.name]:Number(e.target.value)})
+            setFormValues({...formValues,[e.target.name]:e.target.value})
         }
     }
 
