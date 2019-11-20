@@ -5,7 +5,6 @@ import { connect } from "react-redux"
 import { sendStats } from "../Redux/UserStats/userStatsActions";
 
 
-
 const initialValues = {
     gender: "",
     height: "",
@@ -125,7 +124,6 @@ const BioForm = (props) => {
                     </select>
                 </div>    
                 </div>
-                
                     <button className='continue'>Continue</button>
                 
             </form>
