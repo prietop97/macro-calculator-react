@@ -1,10 +1,13 @@
 import React from 'react';
+import Header from './Header';
 
 const UserProfile = () => {
 //get endpoint from backend 
 //map through it
 //display within card
     return (
+        <>
+        <Header />
         <div>
             <h2>Welcome Back 'user'</h2>
             <div>
@@ -27,5 +30,6 @@ const UserProfile = () => {
                 {/* <p>{this.goals}</p> */}
             </div>
         </div>
+        </>
     )
 }

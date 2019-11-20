@@ -4,7 +4,6 @@ import { Route , Switch } from "react-router-dom";
 import PrivateRoute from "./Utils/PrivateRoute"
 import Dashboard from './Components/Dashboard';
 import BioForm from './Components/BioForm';
-import Header from './Components/Header';
 import Login from './Components/Login';
 import SignUp from './Components/SignUp';
 import WelcomePage from './Components/WelcomePage';
@@ -15,7 +14,6 @@ import LandingPage from './Components/LandingPage';
 function App() {
   return (
     <div>
-      {/* <Header /> */}
       <Switch>
         <Route exact path="/" component={LandingPage} />
         <PrivateRoute exact path="/Dashboard" component={Dashboard} />

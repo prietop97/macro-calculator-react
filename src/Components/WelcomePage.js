@@ -2,11 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from "react-redux"
 import styled from 'styled-components';
+import Header from './Header';
 
 
 const WelcomePage = ({currentUser}) => {
 
     return (
+        <>
+        <Header />
         <WelcomeContainer>
             <div className = 'welcome'>
                 {/* Fill in the name with the endpoints later */}
@@ -26,6 +29,7 @@ const WelcomePage = ({currentUser}) => {
             <button className = 'continue'>Continue</button>
             </MyLink> 
         </WelcomeContainer>
+        </>
     )
 }
 

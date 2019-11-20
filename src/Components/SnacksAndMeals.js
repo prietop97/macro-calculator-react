@@ -1,9 +1,12 @@
 import React from 'react';
 import {meals} from './data';
+import Header from './Header';
 
 const SnacksAndMeals = () => {
 
     return (
+        <>
+        <Header />
         <div>
             <div className = 'SnacksAndmeals'>
                 <h1>Snacks And Meals </h1>
@@ -52,6 +55,7 @@ const SnacksAndMeals = () => {
             </div>
             <button className='continue'>Continue</button>
         </div>
+        </>
     )
 }
 export default SnacksAndMeals

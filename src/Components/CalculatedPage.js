@@ -3,11 +3,14 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 import salmon from '../img/salmon.jpg';
 import { Link } from "react-router-dom"
+import Header from './Header';
 
 
 const CalculatedPage = ({userInfo}) => {
     console.log(userInfo);
     return (
+        <>
+        <Header />
         <CalculatedContainer>
             <h2>Based on the information given, your daily intake of macronutrients has been calculated for you.</h2>
             <div className="row">
@@ -33,6 +36,7 @@ const CalculatedPage = ({userInfo}) => {
             <h1>We will now curate a weekly meal plan based on your numbers. Your daily macronutrients will be automatically calculated between the meals you choose per day.</h1>
             <Link to="/Dashboard"><button className='continue'>Continue</button></Link>
         </CalculatedContainer>
+        </>
     )
 }
 
