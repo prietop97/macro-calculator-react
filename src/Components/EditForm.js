@@ -1,44 +1,82 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import Header from './Header';
 import styled from 'styled-components';
 import {month, days, year, feets, inches, meals} from './data.js';
 import { connect } from "react-redux"
-import { sendStats } from "../Redux/UserStats/userStatsActions";
+import { editData } from "../Redux/UserStats/userStatsActions";
 
 
 
 const BioForm = (props) => {
-    const initialValues = {
+    const userValues = {
         gender: props.userInfo.gender,
         height: props.userInfo.height,
         weight: props.userInfo.weight,
         activity_factor: props.userInfo.activity_factor,
         meals_per_day: props.userInfo.meals_per_day, 
-        snacks_per_day: "",
-        goal_multiplier: "",
-        birthdate_day: "",
-        birthdate_month: "",
-        birthdate_year: ""
+        snacks_per_day: props.userInfo.snacks_per_day,
+        goal_multiplier: props.userInfo.goal_multiplier,
+        birthdate_day: props.userInfo.birthdate_day,
+        birthdate_month: props.userInfo.birthdate_month,
+        birthdate_year: props.userInfo.birthdate_year
     }
 
-    const [formValues , setFormValues] = useState(initialValues)
-    const [height , setHeight] = useState({feet: "" , inches: ""})
+    
+    const [formValues , setFormValues] = useState(userValues)
+    const [height , setHeight] = useState({feet: 0 , inches: 0})
+    const [mealss , setMeals] = useState("")
 
     const submitHandler = (e) => {
         e.preventDefault();
-        props.sendStats(formValues,props.history)
+        props.editData(props.userInfo.user_id,formValues,props.history)
     }
-    console.log(formValues)
+
+    useEffect(()=>{
+        const feet = Math.floor(formValues.height / 12)
+        const inches = formValues.height % 12
+        setHeight({feet,inches})
+
+        if(userValues.meals_per_day === 3 && userValues.snacks_per_day === 0){
+            setMeals("3 meals per day")
+        } else if(userValues.meals_per_day === 4){
+            setMeals("4 meals per day")
+        } else if(userValues.snacks_per_day === 2){
+            setMeals("3 meals + 2 snacks per day")
+        }
+    },[])
+ 
+    useEffect(()=>{
+        if(height.feet !== 0){
+        const totalHeight = height.feet * 12 + height.inches
+        setFormValues({...formValues, height: totalHeight})
+        }
+    },[height])
+
+    useEffect(()=>{
+        if(mealss === "3 meals per day"){
+            setFormValues({...formValues, snacks_per_day: 0 , meals_per_day: 3})
+        } else if(mealss === "4 meals per day"){
+            setFormValues({...formValues, snacks_per_day: 0 , meals_per_day: 4})
+        } else if(mealss === "3 meals + 2 snacks per day"){
+            setFormValues({...formValues, snacks_per_day: 2 , meals_per_day: 3})
+        }
+    },[mealss])
+
+    const handleMeals = (e) => {
+        if(e.target.value === "3 meals per day"){
+            setMeals(e.target.value)
+        } else if(e.target.value === "4 meals per day"){
+            setMeals(e.target.value)
+        } else if(e.target.value === "3 meals + 2 snacks per day"){
+            setMeals(e.target.value)
+        }
+    }
+
+    
 
     const handleChange = (e) => {
         e.persist()
-        if(e.target.value === "3 meals per day"){
-            setFormValues({...formValues, meals_per_day: 3 , snacks_per_day: 0 })
-        } else if(e.target.value === "4 meals per day"){
-            setFormValues({...formValues, meals_per_day: 4 , snacks_per_day: 0})
-        } else if(e.target.value === "3 meals + 2 snacks per day"){
-            setFormValues({...formValues , meals_per_day: 3 , snacks_per_day: 2})
-        }else if(e.target.name === "gender"){
+        if(e.target.name === "gender"){
             setFormValues({...formValues,[e.target.name]:e.target.value})
         }  else {
             setFormValues({...formValues,[e.target.name]:e.target.value})
@@ -47,10 +85,10 @@ const BioForm = (props) => {
 
     const handleHeight = (e) => {
         setHeight({...height, [e.target.name] : Number(e.target.value)})
-        const totalHeight = height.feet * 12 + height.inches
-        setFormValues({...formValues, height: Number(totalHeight)})
     }
-
+    
+    console.log(formValues.height,formValues.height % 12)
+    console.log(formValues);
     return (
         <>
         <Header />
@@ -77,11 +115,11 @@ const BioForm = (props) => {
                 <div className = 'height'>
                     <h3>Height: </h3>
                     <div className = 'height-inputs'>
-                        <select onChange={handleHeight} className = 'left' name="feet" required value={formValues.height/12}>Ft
+                        <select onChange={handleHeight} className = 'left' name="feet" required value={(height.feet)}>Ft
                             <option value="">Feet</option>
                             {feets.map((f, index) => (<option key = {index} value = {f}>{f} ft</option>))}
                         </select>
-                        <select onChange={handleHeight} className = 'right' name="inches" required>
+                        <select onChange={handleHeight} className = 'right' name="inches" required value={height.inches % 12}>
                             <option value="" required>Inches</option>
                             {inches.map((inch,index)=>(<option key={index} value={inch}>{inch} in</option>))}
                         </select>
@@ -100,7 +138,7 @@ const BioForm = (props) => {
                 </div>   
                 <div className = 'single-line'>  
                     <h3>Exercise Amount:</h3>
-                    <select name="activity_factor" onChange={handleChange} required>
+                    <select name="activity_factor" onChange={handleChange} required value={formValues.activity_factor}>
                         <option value="">Please Choose An Option</option>
                         <option value = '1.2'>0 days per week</option>
                         <option value = '1.375'> 1-2 days per week</option>
@@ -111,7 +149,7 @@ const BioForm = (props) => {
                 </div>
                 <div className = 'single-line'>
                     <h3>Goals</h3>
-                    <select onChange={handleChange} name="goal_multiplier" required>
+                    <select onChange={handleChange} name="goal_multiplier" required value={formValues.goal_multiplier}>
                         <option value="">Please Choose An Option</option>
                         <option value = {0.8}>Aggressive Weight Loss (20% deficit)</option>
                         <option value = {0.85}>Moderate Weight Loss (15% deficit)</option>
@@ -123,7 +161,7 @@ const BioForm = (props) => {
                     </div>
                 <div>
                     <h3>How Many Meals Per Day?</h3>
-                    <select onChange={handleChange} required>
+                    <select onChange={handleMeals} required value={mealss}>
                         <option value="">Please Choose An Option</option>
                         {meals.map((m,index) => (<option key={index} value={m}>{m}</option>))}
                     </select>
@@ -144,7 +182,7 @@ const mapStateToProps = state => ({
 })
 
 
-export default connect(mapStateToProps,{sendStats})(BioForm)
+export default connect(mapStateToProps,{editData})(BioForm)
 
 
 const BioFormContainer = styled.div`
