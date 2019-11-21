@@ -109,6 +109,7 @@ const CalculatedContainer = styled.div`
 
         &:hover{
             background: #db7c1e;
+            color: white;
         }
     }
 `

@@ -38,6 +38,7 @@ const SignUp = ({signUp , history}) => {
                 <input type='password' placeholder = 'Password' onChange={handleChange} name="password" value={formValues.password} />
             </form>
             <button className='continue' onClick={onSubmit}>Submit</button>
+            <h3>Already Have An Account?</h3>
             <MyLink to="/Login">
                 <button className="log">Log In</button>
             </MyLink>
@@ -65,6 +66,14 @@ const SignUpContainer = styled.div`
         width: 100%;
         font-family: 'Raleway', sans-serif;
         padding-bottom: 2%;
+    }
+    h3{
+        font-family: 'Raleway', sans-serif;
+        font-size: 2.3rem;
+        display: flex;
+        justify-content: center;
+        padding-top: 1%;
+        padding-bottom: 1%;
     }
 
     form {
@@ -109,6 +118,7 @@ const SignUpContainer = styled.div`
 
         &:hover{
             background: #db7c1e;
+            color: white;
         }
     }  
 

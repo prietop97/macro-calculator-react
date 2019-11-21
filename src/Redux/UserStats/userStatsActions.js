@@ -29,19 +29,25 @@ export const fetchStats = (id) => dispatch => {
     axiosWithAuth()
         .get(`/info`)
         .then(res=>dispatch({type: FETCH_STATS_SUCCESS , payload: res.data}))
-        .catch(err=>console.log(err))
+        .catch(err=>dispatch({type: FETCH_STATS_FAILED}))
 }
 
 export const editData = (id,formValues,history) => dispatch => {
-    dispatch({type: EDIT_STATS_START})
     axiosWithAuth()
         .put(`/info/${id}`,formValues)
-        .then(res=>{
-            console.log(res)
+        .then(()=>{
             history.push("/Dashboard")
         })
         .catch(err=>console.log(err))
     
+}
+
+///// NOT REASIB TO USE THIS !! ONLY FOR REACT 2 MVP ---
+export const deleteStats = (id,history) => dispatch => {
+    axiosWithAuth()
+        .delete(`/info/${id}`)
+        .then(()=>history.push("/Biometric"))
+        .catch(err=>console.log(err))
 }
 
 export const calculateStats = (user) => {

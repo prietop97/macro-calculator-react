@@ -1,12 +1,14 @@
-import React,{ useState } from 'react';
+import React,{ useState , useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import { connect } from "react-redux";
 import { login } from "../Redux/UserState/userActions";
 import styled from 'styled-components';
 import Header from './Header';
 
-const Login = ({login,history}) => {
+const Login = ({login,history,error}) => {
     const [formValues,setFormValues] = useState({username: "" , password: ""})
+    const [errorMsg,setErrorMsg] = useState("")
+
 
     const handleChange = (e) =>{
         setFormValues({...formValues , [e.target.name]: e.target.value})
@@ -17,11 +19,22 @@ const Login = ({login,history}) => {
         login(formValues,history)
     }
 
+    useEffect(()=>{
+        if(error !== null){
+            setErrorMsg("Try Again")
+            setTimeout(()=>{
+                setErrorMsg("")
+            },5000)
+        }
+    },[error])
+
+
     return (
         <>
         <Header />
         <LoginContainer className= 'login'>
             <h2>Login </h2> 
+            <p>{errorMsg}</p>
             <form>
                 <h3>Username:</h3>
                 <input type='text' placeholder='Username' value={formValues.username} name="username" onChange={handleChange} />
@@ -30,7 +43,9 @@ const Login = ({login,history}) => {
                 <h3>Password:</h3>
                 <input type='password' placeholder='Password' value={formValues.password} name="password" onChange={handleChange} />
             </form>
+            
             <button onClick={onSubmit}>Submit</button>
+            <h3>Don't Have An Account Yet?</h3>
             <MyLink to="/SignUp">
                 <button>Create Account</button>
             </MyLink>
@@ -40,7 +55,10 @@ const Login = ({login,history}) => {
 
 }
 
-export default connect(null,{login})(Login)
+const mapStateToProps = state => ({
+    error : state.userState.error
+})
+export default connect(mapStateToProps,{login})(Login)
 
 const MyLink = styled(Link)`
         text-decoration: none;
@@ -56,6 +74,19 @@ const LoginContainer = styled.div`
         width: 100%;
         font-family: 'Raleway', sans-serif;
         padding-bottom: 2%;
+    }
+
+    h3{
+        font-family: 'Raleway', sans-serif;
+        font-size: 2.3rem;
+        display: flex;
+        justify-content: center;
+        padding-top: 1%;
+        padding-bottom: 1%;
+    }
+    p{
+        color: red;
+        font-size: 1.5rem;
     }
     
     form{
@@ -100,6 +131,7 @@ const LoginContainer = styled.div`
 
         &:hover{
             background: #db7c1e;
+            color: white;
         }
     }
 `
