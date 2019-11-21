@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import Header from './Header';
 import styled from 'styled-components';
 import {month, days, year, feets, inches, meals} from './data.js';
@@ -20,13 +20,19 @@ const initialValues = {
 }
 const BioForm = (props) => {
     const [formValues , setFormValues] = useState(initialValues)
-    const [height , setHeight] = useState({feet: "" , inches: ""})
+    const [height , setHeight] = useState({feet: 0 , inches: 0})
 
     const submitHandler = (e) => {
         e.preventDefault();
         props.sendStats(formValues,props.history)
     }
     console.log(formValues)
+    console.log(height)
+
+    useEffect(()=>{
+        const totalHeight = height.feet * 12 + height.inches
+        setFormValues({...formValues, height: totalHeight})
+    },[height])
 
     const handleChange = (e) => {
         e.persist()
@@ -45,8 +51,7 @@ const BioForm = (props) => {
 
     const handleHeight = (e) => {
         setHeight({...height, [e.target.name] : Number(e.target.value)})
-        const totalHeight = height.feet * 12 + height.inches
-        setFormValues({...formValues, height: Number(totalHeight)})
+
     }
 
     return (
