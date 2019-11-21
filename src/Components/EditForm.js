@@ -6,19 +6,21 @@ import { connect } from "react-redux"
 import { sendStats } from "../Redux/UserStats/userStatsActions";
 
 
-const initialValues = {
-    gender: "",
-    height: "",
-    weight: "",
-    activity_factor: "",
-    meals_per_day: "", 
-    snacks_per_day: "",
-    goal_multiplier: "",
-    birthdate_day: "",
-    birthdate_month: "",
-    birthdate_year: ""
-}
+
 const BioForm = (props) => {
+    const initialValues = {
+        gender: props.userInfo.gender,
+        height: props.userInfo.height,
+        weight: props.userInfo.weight,
+        activity_factor: props.userInfo.activity_factor,
+        meals_per_day: props.userInfo.meals_per_day, 
+        snacks_per_day: "",
+        goal_multiplier: "",
+        birthdate_day: "",
+        birthdate_month: "",
+        birthdate_year: ""
+    }
+
     const [formValues , setFormValues] = useState(initialValues)
     const [height , setHeight] = useState({feet: "" , inches: ""})
 
@@ -58,15 +60,15 @@ const BioForm = (props) => {
                 <div className = 'birthdate'>
                     <h3>Birthdate:</h3>
                     <div className = 'birthdate-inputs'>
-                        <select className = 'month' onChange={handleChange} name="birthdate_month" required>
+                        <select className = 'month' onChange={handleChange} name="birthdate_month" required value={formValues.birthdate_month}>
                             <option value="" required>Month</option>
                             {month.map((mon,index)=>(<option key={index} value={mon.monthNumber} >{mon.monthString}</option>))}
                         </select>
-                        <select onChange={handleChange} name="birthdate_day" required>
+                        <select onChange={handleChange} name="birthdate_day" required value={formValues.birthdate_day}>
                             <option value="" >Day</option>
                             {days.map((d, index )=> (<option key = {index} value = {d}>{d}</option>))}
                         </select>
-                        <select onChange={handleChange} name="birthdate_year" required>
+                        <select onChange={handleChange} name="birthdate_year" required value={formValues.birthdate_year}>
                             <option value="">Year</option>
                             {year.map((y,index)=>(<option key={index} value={y}>{y}</option>))}
                         </select>
@@ -75,7 +77,7 @@ const BioForm = (props) => {
                 <div className = 'height'>
                     <h3>Height: </h3>
                     <div className = 'height-inputs'>
-                        <select onChange={handleHeight} className = 'left' name="feet" required>Ft
+                        <select onChange={handleHeight} className = 'left' name="feet" required value={formValues.height/12}>Ft
                             <option value="">Feet</option>
                             {feets.map((f, index) => (<option key = {index} value = {f}>{f} ft</option>))}
                         </select>
@@ -87,10 +89,10 @@ const BioForm = (props) => {
                 </div>
                 <div className = 'single-line'>
                     <h3>Weight:</h3>
-                    <input className = 'input' type = 'text' placeholder = 'weight' name="weight" onChange={handleChange} required />
+                    <input className = 'input' type = 'text' value= {formValues.weight} name="weight" onChange={handleChange} required />
                 <div className = 'single-line'>   
                     <h3>Gender: </h3>
-                    <select name="gender" onChange={handleChange} required>
+                    <select name="gender" onChange={handleChange} required value={formValues.gender}>
                         <option value="">Please Choose An Option</option>
                         <option value = 'female'>Female</option>
                         <option value = 'male'>Male</option>
@@ -137,8 +139,12 @@ const BioForm = (props) => {
 
 }
 
+const mapStateToProps = state => ({
+    userInfo: state.userStats.userStatsObj
+})
 
-export default connect(null,{sendStats})(BioForm)
+
+export default connect(mapStateToProps,{sendStats})(BioForm)
 
 
 const BioFormContainer = styled.div`
