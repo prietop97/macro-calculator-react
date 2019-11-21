@@ -28,8 +28,9 @@ const BioForm = (props) => {
 
     const submitHandler = (e) => {
         e.preventDefault();
-        props.editData(props.userInfo.user_id,formValues,props.history)
+        props.editData(props.userInfo.id,formValues,props.history)
     }
+    console.log(formValues)
 
     useEffect(()=>{
         const feet = Math.floor(formValues.height / 12)

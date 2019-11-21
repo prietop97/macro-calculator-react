@@ -36,9 +36,12 @@ export const editData = (id,formValues,history) => dispatch => {
     dispatch({type: EDIT_STATS_START})
     axiosWithAuth()
         .put(`/info/${id}`,formValues)
-        .then(res=>console.log(res.data))
+        .then(res=>{
+            console.log(res)
+            history.push("/Dashboard")
+        })
         .catch(err=>console.log(err))
-    history.push("/Dashboard")
+    
 }
 
 export const calculateStats = (user) => {

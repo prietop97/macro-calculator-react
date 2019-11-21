@@ -24,6 +24,7 @@ const NavBarMenu = ({toggleMenu}) => {
     return (
         <div className={`${toggleMenu ? "" : "hide"} nav-bar-menu`} id="Nav-Bar-Menu">
             <h2>HEY</h2>
+            <button>Delete</button>
         </div>
     )
 }

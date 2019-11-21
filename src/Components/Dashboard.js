@@ -6,14 +6,10 @@ import styled from 'styled-components';
 import Navbar from "./Navbar"
 
 const Dashboard = ({userProfile, fetchStats, userInfo}) => {
-    console.log(userProfile);
-
     const currentDate = new Date();
     const year = currentDate.getFullYear()
     const month = monthNames[currentDate.getMonth()]
     const day = currentDate.getDate()
-    console.log(month)
- 
 
     useEffect(()=>{
         fetchStats(userProfile.user_id)
