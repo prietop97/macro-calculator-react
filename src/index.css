@@ -14,9 +14,8 @@ html{
 
 .nav-bar-menu {
   width: 300px;
-  height: 500px;
-  background: black;
-  color: white;
+  background: #f3f3f3;
+  color: black;
   position: absolute;
   right: 0;
 }
