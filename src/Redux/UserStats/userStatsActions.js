@@ -63,13 +63,12 @@ export const calculateStats = (user) => {
     let birthDate = new Date(`${month}/${day}/${user.birthdate_year}`)
     let oneYear = 1000 * 60 * 60 * 24 * 365
     let difference = Math.floor((currentDate - birthDate) / oneYear)
-    let numberBMR = 0
+    let BMR = 0
     if(user.gender === "male"){
-        numberBMR = 66
+        BMR = 66 + (6.23 * user.height) + (12.7 * user.height) - (6.8 * difference)
     }else{
-        numberBMR = 655
+        BMR = 655 + (4.35 * user.height) + (4.7 * user.height) - (4.5 * difference)
     }
-    const BMR = numberBMR + (6.23 * user.height) + (12.7 * user.height) - (6.8 * difference)
     return Math.floor(BMR * user.activity_factor * user.goal_multiplier)
 }
 
