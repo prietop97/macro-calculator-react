@@ -29,11 +29,13 @@ const NavBarMenu = ({toggleMenu,history}) => {
                 history.push("/Edit")
             }}>EDIT DIET</h1>
 
+            <a href="https://infallible-albattani-8d730d.netlify.com/"><h1 style={{cursor: "pointer",padding: "0 2rem"}}>ABOUT</h1></a>
 
             <h1 style={{cursor: "pointer",padding: "1rem 2rem"}} onClick={()=>{
                 localStorage.clear()
                 history.push("/")
             }}>LOG OUT</h1>
+
         </div>
     )
 }
