@@ -1,4 +1,3 @@
-import axiosWithAuth from "../../Utils/axiosWithAuth"
 import axios from "axios"
 
 export const LOGIN_START = "LOGIN_START"
@@ -36,12 +35,4 @@ export const signUp = (userInfo,history) => dispatch => {
             history.push("/WelcomePage")
         })
         .catch((err)=>dispatch({type: SIGN_UP_FAILED , payload: err.message}))
-}
-
-export const getUser = () => dispatch => {
-    dispatch({type: GET_USER_START});
-    axiosWithAuth()
-        .get("/")
-        .then(res=>console.log(res))
-        .catch(err=>console.log(err))
 }

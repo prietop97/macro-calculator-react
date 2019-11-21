@@ -16,7 +16,7 @@ const Dashboard = ({userProfile, fetchStats, userInfo}) => {
     const day = currentDate.getDate()
 
     let dayOfWeek = currentDate.getDay()
-    console.log(dayOfWeek)
+    // console.log(dayOfWeek)
 
     useEffect(()=>{
         fetchStats(userProfile.user_id)
@@ -62,7 +62,7 @@ const Dashboard = ({userProfile, fetchStats, userInfo}) => {
                 <div className="planning">
                     <div className='daysColumn'>
                         {dayOfWeeks.map(day=>(
-                        <h2 style={day.num === dayOfWeek ? {color: "#db7c1e"} : {}}>{day.text}</h2>
+                        <h2 key={day.num} style={day.num === dayOfWeek ? {color: "#db7c1e"} : {}}>{day.text}</h2>
                         ))}
 
                     </div>

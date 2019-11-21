@@ -7,7 +7,7 @@ import Header from './Header';
 
 
 const CalculatedPage = ({userInfo}) => {
-    console.log(userInfo);
+    // console.log(userInfo);
     return (
         <>
         <Header />

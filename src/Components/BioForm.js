@@ -26,8 +26,8 @@ const BioForm = (props) => {
         e.preventDefault();
         props.sendStats(formValues,props.history)
     }
-    console.log(formValues)
-    console.log(height)
+    // console.log(formValues)
+    // console.log(height)
 
     useEffect(()=>{
         const totalHeight = height.feet * 12 + height.inches
