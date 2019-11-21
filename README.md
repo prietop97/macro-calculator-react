@@ -14,7 +14,7 @@ https://macro-calculator.now.sh/
 - [ ] Clone your version of Repo by typing <git clone > with the link you copied
 - [ ] cd into the client directory using <cd client/>
 - [ ] RUN yarn install to retrieve the client-side dependencies.
-- [ ] RUN yarn start or npm start to local host the React application.
+- [ ] RUN yarn start to local host the React application.
 
 # Package Management
 
