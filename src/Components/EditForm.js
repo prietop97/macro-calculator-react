@@ -94,7 +94,7 @@ const BioForm = (props) => {
         <>
         <Header />
         <BioFormContainer className= 'login'>
-            <h2>Personal Info:</h2>
+            <h2>{props.userName}'s Personal Info:</h2>
             <form  onSubmit={submitHandler}> 
                 <div className = 'birthdate'>
                     <h3>Birthdate:</h3>
@@ -179,7 +179,8 @@ const BioForm = (props) => {
 }
 
 const mapStateToProps = state => ({
-    userInfo: state.userStats.userStatsObj
+    userInfo: state.userStats.userStatsObj, 
+    userName: state.userState.currentUser.fullname
 })
 
 
@@ -187,122 +188,128 @@ export default connect(mapStateToProps,{editData})(BioForm)
 
 
 const BioFormContainer = styled.div`
-    height: 60%;
-    width: 95%;
-    
-    padding-bottom: 5%;
-    margin: 0 auto;
-    h2 {
-    font-size: 4rem;
-    width: 100%;
-    font-family: 'Raleway', sans-serif;
-    }
+height: 60%;
+width: 95%;
 
-    form {
+padding-bottom: 5%;
+margin: 0 auto;
+h2 {
+font-size: 4rem;
+width: 100%;
+font-family: 'Raleway', sans-serif;
+margin-bottom: 2%;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    width: 100%;
+
+    .birthdate {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        margin: 0 auto;
         width: 100%;
-
-        .birthdate {
+        height: 20%;
+        
+        h3 {
             display: flex;
-            flex-direction: column;
-            justify-content: center;
-            width: 100%;
-            height: 20%;
-            
-            h3 {
-                display: flex;
-                justify-content: flex-start;
-                // padding-left: 2%;
-                font-size: 2rem;
-                font-family: 'Raleway', sans-serif;
-            }
-            .birthdate-inputs {
-                display: flex;
-                justify-content: center;
-
-            select {
-                display: flex;
-                width: 33%;
-                padding: 1% 1%;
-                margin: 0 auto;
-            }
-            }
-        }
-        .height{
-            display: flex;
-            flex-direction: column;
             justify-content: flex-start;
-            width: 67%;
-            height: 20%;
-
-            h3 {
-                display: flex;
-                justify-content: flex-start;
-                font-size: 2rem;
-                font-family: 'Raleway', sans-serif;
-            }
-            .height-inputs {
-                display: flex;
-                width:  100%;
-                justify-content: space-between;
-                
-    
-
-                .left {
-                    width: 49.5%;
-                    margin-right: 0.5%;
-                    padding: 1% 1%;
-                }
-                .right {
-                    width: 49.5%;
-                    margin-right: 0.5%; 
-                    padding: 1.5% 1%;
-                    
-                }
-            }
-        }
-        .single-line {
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            width: 100%;
-            height: 40%;
-            margin: 0 auto;
-           
-
-            h3 {
-                display: flex;
-                justify-content: flex-start;
-                font-size: 2rem;
-                font-family: 'Raleway', sans-serif;
-                
-            }
-            .input, select {
-                display: flex; 
-                justify-content: flex-start; 
-                width: 100%;
-                padding: 1% 1%;
-                margin: 0 auto;
-            }   
-            
-        }
-        .continue {
-            display: flex;
-            justify-content: center;
-            border: none;
-            width: 100%;
-            background: white;
-            border-radius: 4px;
-            border: #db7c1e solid 1px;
-            padding: 1%;
+            // padding-left: 2%;
+            font-size: 2rem;
             font-family: 'Raleway', sans-serif;
+        }
+        .birthdate-inputs {
+            display: flex;
+            justify-content: center;
 
-            &:hover{
-                background: #db7c1e;
+        select {
+            display: flex;
+            width: 33%;
+            padding: 1% 1%;
+            margin: 0 auto;
+            margin-bottom: 2%;
+        }
+        }
+    }
+    .height{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        width: 67%;
+        height: 20%;
+
+        h3 {
+            display: flex;
+            justify-content: flex-start;
+            font-size: 2rem;
+            font-family: 'Raleway', sans-serif;
+        }
+        .height-inputs {
+            display: flex;
+            width:  100%;
+            justify-content: space-between;
+            
+        select{
+            margin-bottom: 2%;
+        }
+
+            .left {
+                width: 49.5%;
+                margin-right: 0.5%;
+                padding: 1% 1%;
+            }
+            .right {
+                width: 49.5%;
+                margin-right: 0.5%; 
+                padding: 1.5% 1%;
+                
             }
         }
     }
+    .single-line {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        width: 100%;
+        height: 40%;
+        margin: 0 auto;
+       
+
+        h3 {
+            display: flex;
+            justify-content: flex-start;
+            font-size: 2rem;
+            font-family: 'Raleway', sans-serif;
+            
+        }
+        .input, select {
+            display: flex; 
+            justify-content: flex-start; 
+            width: 100%;
+            padding: 1% 1%;
+            margin: 0 auto;
+            margin-bottom: 2%;
+        }   
+        
+    }
+    .continue {
+        display: flex;
+        justify-content: center;
+        border: none;
+        width: 100%;
+        background: white;
+        border-radius: 4px;
+        border: #db7c1e solid 1px;
+        padding: 1%;
+        font-family: 'Raleway', sans-serif;
+
+        &:hover{
+            background: #db7c1e;
+            color: white;
+        }
+    }
+}
 `

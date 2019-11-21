@@ -156,6 +156,7 @@ const BioFormContainer = styled.div`
     font-size: 4rem;
     width: 100%;
     font-family: 'Raleway', sans-serif;
+    margin-bottom: 2%;
     }
 
     form {
@@ -188,6 +189,7 @@ const BioFormContainer = styled.div`
                 width: 33%;
                 padding: 1% 1%;
                 margin: 0 auto;
+                margin-bottom: 2%;
             }
             }
         }
@@ -209,7 +211,9 @@ const BioFormContainer = styled.div`
                 width:  100%;
                 justify-content: space-between;
                 
-    
+            select{
+                margin-bottom: 2%;
+            }
 
                 .left {
                     width: 49.5%;
@@ -246,6 +250,7 @@ const BioFormContainer = styled.div`
                 width: 100%;
                 padding: 1% 1%;
                 margin: 0 auto;
+                margin-bottom: 2%;
             }   
             
         }
@@ -262,6 +267,7 @@ const BioFormContainer = styled.div`
 
             &:hover{
                 background: #db7c1e;
+                color: white;
             }
         }
     }

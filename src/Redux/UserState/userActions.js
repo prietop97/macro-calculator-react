@@ -23,7 +23,7 @@ export const login = (userInfo,history) => dispatch => {
             dispatch({type:LOGIN_SUCCESS , payload: res.data})
             history.push("/Dashboard")
         })
-        .catch((err)=>console.log(err.message))
+        .catch((err)=>dispatch({type: LOGIN_FAILED}))
 }
 
 export const signUp = (userInfo,history) => dispatch => {
