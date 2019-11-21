@@ -71,9 +71,9 @@ export const calculateStats = (user) => {
     let difference = Math.floor((currentDate - birthDate) / oneYear)
     let BMR = 0
     if(user.gender === "male"){
-        BMR = 66 + (6.23 * user.height) + (12.7 * user.height) - (6.8 * difference)
+        BMR = 66 + (6.23 * user.weight) + (12.7 * user.height) - (6.8 * difference)
     }else{
-        BMR = 655 + (4.35 * user.height) + (4.7 * user.height) - (4.5 * difference)
+        BMR = 655 + (4.35 * user.weight) + (4.7 * user.height) - (4.5 * difference)
     }
     return Math.floor(BMR * user.activity_factor * user.goal_multiplier)
 }

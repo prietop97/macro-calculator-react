@@ -47,11 +47,11 @@ export const getMacros = (stats) => {
     const height = stats.height.feet * 12 + stats.height.inches
 
     const BMR = getBMR(stats,height)
-    console.log(BMR)
+    // console.log(BMR)
     const activityLevel = getActivityLevel(stats.activityLevel)
-    console.log(activityLevel)
+    // console.log(activityLevel)
     const getGoal = getGoals(stats.goal)
-    console.log(getGoal)
+    // console.log(getGoal)
     const totalCalories = Math.floor(BMR * activityLevel * getGoal)
     const gramsOfProtein = totalCalories * 0.075
     const gramsOfCarbs = totalCalories * 0.1

@@ -7,7 +7,6 @@ import Snacks from './Meals/Snacks';
 import eggandvegis from '../img/eggandvegis.jpg';
 import chickenandpeppers from '../img/chickenandpeppers.jpg';
 import salmononspinich from '../img/salmononspinich.jpg';
-import yogurtgranolafruit from '../img/yogurtgranolafruit.jpg';
 import trailmixbowl from '../img/trailmixbowl.jpg';
 import salmon from '../img/salmon.jpg'
 

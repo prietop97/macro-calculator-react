@@ -16,7 +16,6 @@ const SignUp = ({signUp , history}) => {
         e.preventDefault()
         signUp(formValues,history)
     }
-    console.log(formValues)
 
     return (
         <>

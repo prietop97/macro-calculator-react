@@ -1,6 +1,5 @@
 import { createStore , combineReducers , applyMiddleware } from "redux"
 import thunk from "redux-thunk"
-import logger from "redux-logger"
 
 import { userReducer } from "./UserState/userReducer"
 import { userStatsReducer } from "./UserStats/userStatsReducer";
@@ -22,6 +21,6 @@ let reducer = combineReducers({
 
 
 
-const middleware = [thunk,logger]
+const middleware = [thunk]
 export const store = createStore(persistReducer(persistConfig , reducer),applyMiddleware(...middleware))
 export const persistor = persistStore(store)

@@ -30,7 +30,7 @@ const BioForm = (props) => {
         e.preventDefault();
         props.editData(props.userInfo.id,formValues,props.history)
     }
-    console.log(formValues)
+    // console.log(formValues)
 
     useEffect(()=>{
         const feet = Math.floor(formValues.height / 12)
@@ -88,8 +88,8 @@ const BioForm = (props) => {
         setHeight({...height, [e.target.name] : Number(e.target.value)})
     }
     
-    console.log(formValues.height,formValues.height % 12)
-    console.log(formValues);
+    // console.log(formValues.height,formValues.height % 12)
+    // console.log(formValues);
     return (
         <>
         <Header />
