@@ -91,7 +91,7 @@ const BioForm = (props) => {
                     </div>
                 </div>
                 <div className = 'single-line'>
-                    <h3>Weight:</h3>
+                    <h3>Weight (lbs):</h3>
                     <input className = 'input' type = 'text' placeholder = 'weight' name="weight" onChange={handleChange} required />
                 <div className = 'single-line'>   
                     <h3>Gender: </h3>
