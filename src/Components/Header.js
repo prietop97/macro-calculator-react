@@ -12,10 +12,12 @@ export default function Header() {
 }
 
 const HeaderContainer = styled.div`
+
   display: flex;
   justify-content: space-evenly;
   padding: 1%;
   font-family: 'Saira Extra Condensed', sans-serif;
   color: #DB7C1E;
   font-size: 40px;
+
 `
