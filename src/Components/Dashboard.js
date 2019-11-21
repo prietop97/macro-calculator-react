@@ -3,7 +3,8 @@ import { connect } from "react-redux"
 import { fetchStats } from "../Redux/UserStats/userStatsActions"
 import {monthNames} from './data';
 import styled from 'styled-components';
-import Navbar from "./Navbar"
+import Navbar from "./Navbar";
+import TwoSnacks from './TwoSnacks';
 
 const Dashboard = ({userProfile, fetchStats, userInfo}) => {
     const currentDate = new Date();
@@ -45,53 +46,19 @@ const Dashboard = ({userProfile, fetchStats, userInfo}) => {
             
                 <div className="planning">
                     <div className='daysColumn'>
-                        <h1 className='orange'>Monday</h1>
-                        <h1>Tuesday</h1>
-                        <h1>Wednesday</h1>
-                        <h1>Thursday</h1>
-                        <h1>Friday</h1>
-                        <h1>Saturday</h1>
-                        <h1>Sunday</h1>
+                        <h2 className='orange'>Monday</h2>
+                        <h2>Tuesday</h2>
+                        <h2>Wednesday</h2>
+                        <h2>Thursday</h2>
+                        <h2>Friday</h2>
+                        <h2>Saturday</h2>
+                        <h2>Sunday</h2>
                     </div>
-                    <div className='fourImages'>
-                        <div>
-                            <div>
-                            <h3>Meal 1:</h3>
-                            <p>Protein: {"15g"}</p>
-                            <p>Fats: {"5g"}</p>
-                            <p>Carbohydrates: {"20g"}</p>
-                            </div>
-                            {/* img goes here */}
-                        </div>
-                        <div>
-                            <div>
-                            <h3>Meal 1:</h3>
-                            <p>Protein: {"15g"}</p>
-                            <p>Fats: {"34g"}</p>
-                            <p>Carbohydrates: {"12g"}</p>
-                            </div>
-                            {/* img goes here */}
-                        </div>
-                        <div>
-                            <div>
-                            <h3>Meal 1:</h3>
-                            <p>Protein: {"19g"}</p>
-                            <p>Fats: {"64g"}</p>
-                            <p>Carbohydrates: {"22g"}</p>
-                            </div>
-                            {/* img goes here */}
-                        </div>
-                        <div>
-                            <div>
-                            <h3>Meal 1:</h3>
-                            <p>Protein: {"17g"}</p>
-                            <p>Fats: {"2g"}</p>
-                            <p>Carbohydrates: {"99g"}</p>
-                            </div>
-                            {/* img goes here */}
-                        </div>
+                    <div className='imagesColumn'>
+                        <TwoSnacks />
                     </div>
                 </div>
+                
         </DashboardContainer>
         </>
     )
@@ -122,14 +89,16 @@ const DashboardContainer = styled.div`
 
             
             h1{
-                font-size: 2.5rem;
+                font-size: 4rem;
                 font-family: 'Raleway', sans-serif;
                 padding-bottom: 2%;
+                font-weight: 900;
             }
             .paragraphs{
                 display: flex;
                 justify-content: space-evenly;
-                font-size: 2rem;
+                font-size: 3rem;
+                font-weight: 600;
                 color: #4F4F4F;
                 padding-bottom: 2%;
 
@@ -139,30 +108,38 @@ const DashboardContainer = styled.div`
             display: flex;
             justify-content: flex-end;
             width: 20%;
+
+            h1{
+                font-size: 3.8rem;
+                font-family: 'Raleway', sans-serif;
+                padding-bottom: 2%;
+                font-weight: 900;
+            }
         }
     }
     .planning{ 
         display: flex;
         flex-direction: row;
+        padding-top: 5%;
 
         .daysColumn{
             display: flex;
             flex-direction: column;
             width: 30%;
 
-            h1{
-                font-size: 3rem;
+            h2{
+                font-size: 5rem;
                 font-family: 'Raleway', sans-serif;
+                padding-bottom: 2%;
 
                 &:hover{
                     color: #DB7C1E;
                 }
             }
         }
-        .fourImages{
-            display: flex;
-            flex-direction: column;
-            width: 60%;
+        .imagesColumn{
+            width: 65%;
         }
+
     }    
 `

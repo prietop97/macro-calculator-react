@@ -12,6 +12,9 @@ import CalculatedPage from './Components/CalculatedPage';
 import LandingPage from './Components/LandingPage';
 import EditForm from './Components/EditForm';
 
+// delete these later
+import TwoSnacks from './Components/TwoSnacks';
+
 function App() {
   return (
     <div>
@@ -25,6 +28,9 @@ function App() {
         <PrivateRoute exact path = "/SnacksAndMeals" component = {SnacksAndMeals} />
         <PrivateRoute exact path = "/CalculatedPage" component = {CalculatedPage} />
         <PrivateRoute exact path = "/Edit" component={EditForm} />
+
+        {/* delete these later */}
+        <Route path='/TwoSnacks' component={TwoSnacks} /> 
       </Switch>
     </div>
   );
