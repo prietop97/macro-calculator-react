@@ -5,6 +5,8 @@ import {monthNames} from './data';
 import styled from 'styled-components';
 import Navbar from "./Navbar";
 import TwoSnacks from './TwoSnacks';
+import ThreeMeals from './ThreeMeals';
+import FourMeals from './FourMeals';
 
 const Dashboard = ({userProfile, fetchStats, userInfo}) => {
     const currentDate = new Date();
@@ -16,6 +18,15 @@ const Dashboard = ({userProfile, fetchStats, userInfo}) => {
         fetchStats(userProfile.user_id)
     },[])
 
+    function mealRender(){
+        if (userInfo.userStatsObj.snacks_per_day === 2){
+            return(<TwoSnacks />)
+        } else if (userInfo.userStatsObj.meals_per_day === 4){
+            return(<FourMeals />)
+        } else {
+            return(<ThreeMeals />)
+        }
+    }
     
 
     return (
@@ -55,7 +66,7 @@ const Dashboard = ({userProfile, fetchStats, userInfo}) => {
                         <h2>Sunday</h2>
                     </div>
                     <div className='imagesColumn'>
-                        <TwoSnacks />
+                        {mealRender()}
                     </div>
                 </div>
                 
@@ -85,7 +96,8 @@ const DashboardContainer = styled.div`
             display: flex;
             justify-content: flex-start;
             flex-direction: column;
-            width: 60%
+            width: 60%;
+            padding-top: 2%;
 
             
             h1{
@@ -108,6 +120,7 @@ const DashboardContainer = styled.div`
             display: flex;
             justify-content: flex-end;
             width: 20%;
+            padding-top: 2%;
 
             h1{
                 font-size: 3.8rem;

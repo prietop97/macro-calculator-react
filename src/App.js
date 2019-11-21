@@ -13,7 +13,7 @@ import LandingPage from './Components/LandingPage';
 import EditForm from './Components/EditForm';
 
 // delete these later
-import TwoSnacks from './Components/TwoSnacks';
+import ThreeMeals from './Components/ThreeMeals';
 
 function App() {
   return (
@@ -30,7 +30,7 @@ function App() {
         <PrivateRoute exact path = "/Edit" component={EditForm} />
 
         {/* delete these later */}
-        <Route path='/TwoSnacks' component={TwoSnacks} /> 
+        <Route path='/ThreeMeals' component={ThreeMeals} /> 
       </Switch>
     </div>
   );
