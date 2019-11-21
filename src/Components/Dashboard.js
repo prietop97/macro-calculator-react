@@ -7,12 +7,16 @@ import Navbar from "./Navbar";
 import TwoSnacks from './TwoSnacks';
 import ThreeMeals from './ThreeMeals';
 import FourMeals from './FourMeals';
+import {dayOfWeeks} from "./data"
 
 const Dashboard = ({userProfile, fetchStats, userInfo}) => {
     const currentDate = new Date();
     const year = currentDate.getFullYear()
     const month = monthNames[currentDate.getMonth()]
     const day = currentDate.getDate()
+
+    let dayOfWeek = currentDate.getDay()
+    console.log(dayOfWeek)
 
     useEffect(()=>{
         fetchStats(userProfile.user_id)
@@ -57,13 +61,10 @@ const Dashboard = ({userProfile, fetchStats, userInfo}) => {
             
                 <div className="planning">
                     <div className='daysColumn'>
-                        <h2 className='orange'>Monday</h2>
-                        <h2>Tuesday</h2>
-                        <h2>Wednesday</h2>
-                        <h2>Thursday</h2>
-                        <h2>Friday</h2>
-                        <h2>Saturday</h2>
-                        <h2>Sunday</h2>
+                        {dayOfWeeks.map(day=>(
+                        <h2 style={day.num === dayOfWeek ? {color: "#db7c1e"} : {}}>{day.text}</h2>
+                        ))}
+
                     </div>
                     <div className='imagesColumn'>
                         {mealRender()}
@@ -108,7 +109,8 @@ const DashboardContainer = styled.div`
             }
             .paragraphs{
                 display: flex;
-                justify-content: space-evenly;
+                justify-content: space-between;
+                width: 80%;
                 font-size: 3rem;
                 font-weight: 600;
                 color: #4F4F4F;
@@ -144,10 +146,6 @@ const DashboardContainer = styled.div`
                 font-size: 5rem;
                 font-family: 'Raleway', sans-serif;
                 padding-bottom: 2%;
-
-                &:hover{
-                    color: #DB7C1E;
-                }
             }
         }
         .imagesColumn{
