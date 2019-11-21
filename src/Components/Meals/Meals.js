@@ -8,9 +8,9 @@ const Meals = props => {
         <MealsContainer>
             <div className='macros'>
                 <h2>Meal {props.mealNumber}:</h2>
-                <h4>Protein: {props.userInfo.mealProtein}</h4>
-                <h4>Fats: {props.userInfo.mealFats}</h4>
-                <h4>Carbs: {props.userInfo.mealCarbs}</h4>
+                <h4>Protein: {props.userInfo.mealProtein} g</h4>
+                <h4>Fats: {props.userInfo.mealFats} g</h4>
+                <h4>Carbs: {props.userInfo.mealCarbs} g</h4>
 
             </div>
             <div className='image'>

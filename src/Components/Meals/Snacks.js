@@ -3,14 +3,13 @@ import {connect} from 'react-redux';
 import styled from 'styled-components';
 
 const Snacks = props => {
-
     return(
         <SnacksContainer>
             <div className='macros'>
                 <h2>Snack {props.snackNumber}:</h2>
-                <h4>Protein: {props.userInfo.snackProtein}</h4>
-                <h4>Fats: {props.userInfo.snackFats}</h4>
-                <h4>Carbs: {props.userInfo.snackCarbs}</h4>
+                <h4>Protein: {props.userInfo.snackProtein} g</h4>
+                <h4>Fats: {props.userInfo.snackFats} g</h4>
+                <h4>Carbs: {props.userInfo.snackCarbs} g</h4>
 
             </div>
             <div className='image'>

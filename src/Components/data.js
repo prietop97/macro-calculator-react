@@ -28,3 +28,13 @@ export const inches = [0,1,2,3,4,5,6,7,8,9,10,11]
 export const meals = ["3 meals per day", "4 meals per day", "3 meals + 2 snacks per day"]
 
 // 
+
+export const dayOfWeeks = [
+  {text: "Sunday" , num: 0},
+  {text: "Monday" , num: 1},
+  {text: "Tuesday" , num: 2},
+  {text: "Wednesday" , num: 3},
+  {text: "Thursday" , num: 4},
+  {text: "Friday" , num: 5 },
+  {text: "Saturday" , num: 6}
+]

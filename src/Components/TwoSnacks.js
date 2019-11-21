@@ -9,19 +9,20 @@ import chickenandpeppers from '../img/chickenandpeppers.jpg';
 import salmononspinich from '../img/salmononspinich.jpg';
 import yogurtgranolafruit from '../img/yogurtgranolafruit.jpg';
 import trailmixbowl from '../img/trailmixbowl.jpg';
+import salmon from '../img/salmon.jpg'
 
 const TwoSnacks = (props) => {
 
     return(
         <TwoSnacksContainer>
             <div className='meals'>
-                <Meals mealNumber = '1' img={eggandvegis}/>
+                <Meals mealNumber = '1' img={salmon}/>
                 <Meals mealNumber = '2' img={chickenandpeppers}/>
                 <Meals mealNumber = '3' img={salmononspinich}/>
             </div>
 
             <div className='snacks'>
-                <Snacks snackNumber = '1' img={yogurtgranolafruit} />
+                <Snacks snackNumber = '1' img={eggandvegis} />
                 <Snacks snackNumber = '2' img={trailmixbowl} />
                 
             </div>            

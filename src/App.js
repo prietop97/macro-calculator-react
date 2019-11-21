@@ -12,14 +12,12 @@ import CalculatedPage from './Components/CalculatedPage';
 import LandingPage from './Components/LandingPage';
 import EditForm from './Components/EditForm';
 
-// delete these later
-import ThreeMeals from './Components/ThreeMeals';
-
 function App() {
+
   return (
     <div>
       <Switch>
-        <Route exact path="/" component={LandingPage} />
+        <Route path="/" exact component = {LandingPage} />
         <PrivateRoute exact path="/Dashboard" component={Dashboard} />
         <PrivateRoute exact path = "/Biometrics" component = {BioForm} />
         <Route path = "/Login" component = {Login} />
@@ -28,9 +26,6 @@ function App() {
         <PrivateRoute exact path = "/SnacksAndMeals" component = {SnacksAndMeals} />
         <PrivateRoute exact path = "/CalculatedPage" component = {CalculatedPage} />
         <PrivateRoute exact path = "/Edit" component={EditForm} />
-
-        {/* delete these later */}
-        <Route path='/ThreeMeals' component={ThreeMeals} /> 
       </Switch>
     </div>
   );
