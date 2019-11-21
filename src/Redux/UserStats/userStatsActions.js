@@ -95,19 +95,12 @@ export const mealPlan = (proteinGrams,carbsGrams,fatsGrams,userInfo) => {
 
     }   
     return {
-        meals:{
-            mealProtein,
-            mealCarbs,
-            mealFats
-        },
-        snacks:{
           snackProtein,
           snackFats,
           snackCarbs,
           mealProtein,
           mealCarbs,
           mealFats
-        }
     }
 
 }
