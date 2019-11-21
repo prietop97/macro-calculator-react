@@ -1,4 +1,5 @@
 import React,{ useState } from 'react';
+import {Link} from 'react-router-dom';
 import { connect } from "react-redux";
 import { login } from "../Redux/UserState/userActions";
 import styled from 'styled-components';
@@ -30,6 +31,9 @@ const Login = ({login,history}) => {
                 <input type='password' placeholder='Password' value={formValues.password} name="password" onChange={handleChange} />
             </form>
             <button onClick={onSubmit}>Submit</button>
+            <MyLink to="/SignUp">
+                <button>Create Account</button>
+            </MyLink>
         </LoginContainer>
         </>
     )
@@ -37,6 +41,10 @@ const Login = ({login,history}) => {
 }
 
 export default connect(null,{login})(Login)
+
+const MyLink = styled(Link)`
+        text-decoration: none;
+`
 
 const LoginContainer = styled.div`
     height: 60vh;
