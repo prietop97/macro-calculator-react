@@ -1,6 +1,7 @@
 import React,{useState} from 'react'
 import styled from "styled-components"
 import {withRouter} from "react-router-dom"
+import largeLogo from '../img/largeLogo.png';
 
 export default function Navbar() {
     const [toggleMenu, setToggleMenu] = useState(false)
@@ -12,6 +13,13 @@ export default function Navbar() {
     return (
         <>
         <NavContainer>
+            <LinkContainer>
+                <MyLink>
+                    <a href="https://infallible-albattani-8d730d.netlify.com/"> 
+                        <img src={largeLogo} alt="large logo" className='something'/>
+                    </a>
+                </MyLink>
+            </LinkContainer>
             <Title>Dashboard</Title>
             <Icon onClick={handleClick} className="fas fa-bars"></Icon>
         </NavContainer>
@@ -65,4 +73,21 @@ const Icon = styled.i `
     &:hover{
         cursor: pointer;
     }
+`
+const LinkContainer = styled.div`
+    font-size: 2.7rem;
+    position: absolute;
+    top: 5px;
+    left: 100px;
+`
+
+const MyLink = styled.div`
+    text-decoration: none;
+
+    img{
+
+        width: 40px;
+        height: 40px;
+    }
+
 `
