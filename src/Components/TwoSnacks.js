@@ -39,6 +39,7 @@ const TwoSnacksContainer = styled.div`
     .meals{
         width: 40%;
         flex-direction: column;
+        margin: 0 auto;
     }
 
     .snacks{
