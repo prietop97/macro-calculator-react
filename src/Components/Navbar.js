@@ -62,4 +62,7 @@ const Icon = styled.i `
     position: absolute;
     top: 10px;
     right: 5px;
+    &:hover{
+        cursor: pointer;
+    }
 `
