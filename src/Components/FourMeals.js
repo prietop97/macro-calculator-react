@@ -44,7 +44,8 @@ const FourMealsContainer = styled.div`
         padding-bottom: 15%;
 
         div{
-            width: 70%;
+            width: 80%;
+            margin: 0 auto;
         }
     }
 
@@ -52,7 +53,8 @@ const FourMealsContainer = styled.div`
         display: flex;
 
         div{
-            width: 70%;
+            width: 80%;
+            margin: 0 auto;
         }
     }
 `

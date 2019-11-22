@@ -44,6 +44,7 @@ const LandingPageContainer = styled.div`
             &:hover{
                 background: #db7c1e;
                 color: white;
+                cursor: pointer;
             }
         }
     

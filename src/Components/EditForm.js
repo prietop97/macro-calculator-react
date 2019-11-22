@@ -309,6 +309,7 @@ form {
         &:hover{
             background: #db7c1e;
             color: white;
+            cursor: pointer;
         }
     }
 }
