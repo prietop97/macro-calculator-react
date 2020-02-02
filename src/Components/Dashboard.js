@@ -86,6 +86,8 @@ const DashboardContainer = styled.div`
 
   div {
     display: flex;
+    margin: 0 1%;
+    max-width: 100%;
     @media screen and (max-width: 1000px){
         width: 100%;
         padding: 1rem;
@@ -152,6 +154,7 @@ const DashboardContainer = styled.div`
     }
     .imagesColumn {
       width: 100%;
+      max-width: 100%;
     }
   }
 `;

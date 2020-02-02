@@ -30,6 +30,7 @@ export default ThreeMeals;
 const ThreeMealsContainer = styled.div`
   display: flex;
   width: 100%;
+  max-width: 100%;
   @media screen and (max-width: 1000px) {
     flex-direction: column;
   }
