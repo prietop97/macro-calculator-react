@@ -35,11 +35,17 @@ export default TwoSnacks;
 const TwoSnacksContainer = styled.div`
     display: flex;
     width: 100%;
+    @media screen and (max-width: 1000px) {
+        flex-direction: column;
+      }
 
     .meals{
         width: 40%;
         flex-direction: column;
         margin: 0 auto;
+        @media screen and (max-width: 1000px) {
+        margin: 0;
+      }
     }
 
     .snacks{

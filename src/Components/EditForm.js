@@ -228,7 +228,7 @@ form {
         select {
             display: flex;
             width: 33%;
-            padding: 1% 1%;
+            padding: 1.5rem 1.5rem;
             margin: 0 auto;
             margin-bottom: 2%;
         }
@@ -259,12 +259,12 @@ form {
             .left {
                 width: 49.5%;
                 margin-right: 0.5%;
-                padding: 1% 1%;
+                padding: 1.5rem 1.5rem;
             }
             .right {
                 width: 49.5%;
                 margin-right: 0.5%; 
-                padding: 1.5% 1%;
+                padding: 1.5rem 1.5rem;
                 
             }
         }
@@ -289,7 +289,7 @@ form {
             display: flex; 
             justify-content: flex-start; 
             width: 100%;
-            padding: 1% 1%;
+            padding: 1.5rem 1.5rem;
             margin: 0 auto;
             margin-bottom: 2%;
         }   
@@ -303,7 +303,7 @@ form {
         background: white;
         border-radius: 4px;
         border: #db7c1e solid 1px;
-        padding: 1%;
+        padding: 1.5rem 0;
         font-family: 'Raleway', sans-serif;
 
         &:hover{

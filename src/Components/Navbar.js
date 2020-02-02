@@ -58,6 +58,7 @@ const NavContainer = styled.div `
     color: white;
     align-items: center;
     text-align: center;
+    justify-content: space-around;
 `
 
 const Title = styled.h2 `
