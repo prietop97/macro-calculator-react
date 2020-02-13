@@ -13,13 +13,16 @@ const Login = ({ login, history, error }) => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value });
   };
 
-  const onSubmit = async e => {
+  const handleSubmit = async e => {
     e.preventDefault();
-    await login(formValues, history);
-    setErrorMsg('Try Again');
-    setTimeout(() => {
-      setErrorMsg('');
-    }, 5000);
+    try {
+      await login(formValues, history);
+    } catch (error) {
+      setErrorMsg('Try Again');
+      setTimeout(() => {
+        setErrorMsg('');
+      }, 5000);
+    }
   };
 
   return (
@@ -27,8 +30,8 @@ const Login = ({ login, history, error }) => {
       <LoginContainer className="login">
         <Header />
         <h2>Login </h2>
-        <p>{errorMsg}</p>
-        <form>
+        <p>{error}</p>
+        <form onSubmit={handleSubmit}>
           <h3>Username:</h3>
           <input
             type="text"
@@ -37,8 +40,7 @@ const Login = ({ login, history, error }) => {
             name="username"
             onChange={handleChange}
           />
-        </form>
-        <form>
+
           <h3>Password:</h3>
           <input
             type="password"
@@ -47,9 +49,15 @@ const Login = ({ login, history, error }) => {
             name="password"
             onChange={handleChange}
           />
-        </form>
 
-        <button onClick={onSubmit}>Submit</button>
+          <button
+            onClick={handleSubmit}
+            className="continue"
+            style={{ marginTop: '2rem' }}
+          >
+            Submit
+          </button>
+        </form>
         <h3>Don't Have An Account Yet?</h3>
         <MyLink to="/SignUp">
           <button class="create">Create Account</button>

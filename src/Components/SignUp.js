@@ -5,20 +5,30 @@ import { connect } from 'react-redux';
 import { signUp } from '../Redux/UserState/userActions';
 import Header from './Header';
 
-const SignUp = ({ signUp, history }) => {
+const SignUp = ({ signUp, history, error }) => {
+  console.log(error);
+
   const [formValues, setFormValues] = useState({
     username: '',
     password: '',
     fullname: ''
   });
+  const [errorMsg, setErrorMsg] = useState('');
 
   const handleChange = e => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value });
   };
 
-  const onSubmit = e => {
+  const onSubmit = async e => {
     e.preventDefault();
-    signUp(formValues, history);
+    try {
+      await signUp(formValues, history);
+    } catch (error) {
+      setErrorMsg('Try Again');
+      setTimeout(() => {
+        setErrorMsg('');
+      }, 5000);
+    }
   };
 
   return (
@@ -27,7 +37,8 @@ const SignUp = ({ signUp, history }) => {
         <Header />
         <div className="container">
           <h2>Create Account</h2>
-          <form>
+          <p>{error}</p>
+          <form onSubmit={onSubmit}>
             <h3>Full Name</h3>
             <input
               type="text"
@@ -36,8 +47,7 @@ const SignUp = ({ signUp, history }) => {
               name="fullname"
               value={formValues.fullname}
             />
-          </form>
-          <form>
+
             <h3>Username:</h3>
             <input
               type="username"
@@ -46,8 +56,7 @@ const SignUp = ({ signUp, history }) => {
               name="username"
               value={formValues.username}
             />
-          </form>
-          <form>
+
             <h3>Password:</h3>
             <input
               type="password"
@@ -56,10 +65,14 @@ const SignUp = ({ signUp, history }) => {
               name="password"
               value={formValues.password}
             />
+            <button
+              type="submit"
+              className="continue"
+              style={{ marginTop: '3rem' }}
+            >
+              Submit
+            </button>
           </form>
-          <button className="continue" onClick={onSubmit}>
-            Submit
-          </button>
           <h3>Already Have An Account?</h3>
           <MyLink to="/Login">
             <button className="create">Log In</button>
@@ -161,4 +174,10 @@ const SignUpContainer = styled.div`
   }
 `;
 
-export default connect(null, { signUp })(SignUp);
+const mapStateToProps = state => {
+  console.log(state);
+  return {
+    error: state.userState.error
+  };
+};
+export default connect(mapStateToProps, { signUp })(SignUp);
