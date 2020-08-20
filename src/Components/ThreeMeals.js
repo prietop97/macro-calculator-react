@@ -1,13 +1,13 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 //components
-import Meals from './Meals/Meals';
-import salmononspinich from '../img/salmononspinich.jpg';
-import eggandvegis from '../img/eggandvegis.jpg';
-import salmon from '../img/salmon.jpg';
+import Meals from "./Meals/Meals";
+import salmononspinich from "../img/salmononspinich.jpg";
+import eggandvegis from "../img/eggandvegis.jpg";
+import salmon from "../img/salmon.jpg";
 
-const ThreeMeals = props => {
+const ThreeMeals = (props) => {
   return (
     <ThreeMealsContainer>
       <div className="left">

@@ -1,13 +1,13 @@
-import axios from "axios"
+import axios from "axios";
 
 const axiosWithAuth = () => {
-    const token = localStorage.getItem("token")
-    return axios.create({
-        baseURL: "https://macro-calculator-backend.herokuapp.com",
-        headers: {
-            Authorization: token
-        }
-    })
-}
+  const token = localStorage.getItem("token");
+  return axios.create({
+    baseURL: "https://macrocalculatorold.herokuapp.com",
+    headers: {
+      Authorization: token,
+    },
+  });
+};
 
 export default axiosWithAuth;

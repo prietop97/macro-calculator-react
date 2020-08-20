@@ -1,25 +1,27 @@
-import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
-import { fetchStats } from '../Redux/UserStats/userStatsActions';
-import { monthNames } from './data';
-import styled from 'styled-components';
-import Navbar from './Navbar';
-import TwoSnacks from './TwoSnacks';
-import ThreeMeals from './ThreeMeals';
-import FourMeals from './FourMeals';
-import { dayOfWeeks } from './data';
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import { fetchStats } from "../Redux/UserStats/userStatsActions";
+import { monthNames } from "./data";
+import styled from "styled-components";
+import Navbar from "./Navbar";
+import TwoSnacks from "./TwoSnacks";
+import ThreeMeals from "./ThreeMeals";
+import FourMeals from "./FourMeals";
+import { dayOfWeeks } from "./data";
+import { useHistory } from "react-router-dom";
 
 const Dashboard = ({ userProfile, fetchStats, userInfo }) => {
   const currentDate = new Date();
   const year = currentDate.getFullYear();
   const month = monthNames[currentDate.getMonth()];
   const day = currentDate.getDate();
+  const history = useHistory();
 
   let dayOfWeek = currentDate.getDay();
   // console.log(dayOfWeek)
 
   useEffect(() => {
-    fetchStats(userProfile.user_id);
+    fetchStats(userProfile.user_id, history);
   }, []);
 
   function mealRender() {
@@ -30,6 +32,9 @@ const Dashboard = ({ userProfile, fetchStats, userInfo }) => {
     } else {
       return <ThreeMeals />;
     }
+  }
+  if (!userInfo) {
+    return <div>Loading...</div>;
   }
 
   return (
@@ -56,10 +61,10 @@ const Dashboard = ({ userProfile, fetchStats, userInfo }) => {
 
         <div className="planning">
           <div className="daysColumn">
-            {dayOfWeeks.map(day => (
+            {dayOfWeeks.map((day) => (
               <h2
                 key={day.num}
-                style={day.num === dayOfWeek ? { color: '#db7c1e' } : {}}
+                style={day.num === dayOfWeek ? { color: "#db7c1e" } : {}}
               >
                 {day.text}
               </h2>
@@ -72,9 +77,9 @@ const Dashboard = ({ userProfile, fetchStats, userInfo }) => {
   );
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   userProfile: state.userState.currentUser,
-  userInfo: state.userStats
+  userInfo: state.userStats,
 });
 export default connect(mapStateToProps, { fetchStats })(Dashboard);
 
@@ -88,9 +93,9 @@ const DashboardContainer = styled.div`
     display: flex;
     margin: 0 1%;
     max-width: 100%;
-    @media screen and (max-width: 1000px){
-        width: 100%;
-        padding: 1rem;
+    @media screen and (max-width: 1000px) {
+      width: 100%;
+      padding: 1rem;
     }
 
     .stats {
@@ -102,7 +107,7 @@ const DashboardContainer = styled.div`
 
       h1 {
         font-size: 4rem;
-        font-family: 'Raleway', sans-serif;
+        font-family: "Raleway", sans-serif;
         padding-bottom: 2%;
         font-weight: 900;
       }
@@ -114,6 +119,10 @@ const DashboardContainer = styled.div`
         font-weight: 600;
         color: #4f4f4f;
         padding-bottom: 2%;
+        @media screen and (max-width: 1000px) {
+          flex-direction: column;
+          font-size: 2rem;
+        }
       }
     }
     .month {
@@ -121,13 +130,13 @@ const DashboardContainer = styled.div`
       justify-content: flex-end;
       width: 20%;
       padding-top: 2%;
-      @media screen and (max-width: 1000px){
+      @media screen and (max-width: 1000px) {
         display: none;
-    }
+      }
 
       h1 {
         font-size: 3.8rem;
-        font-family: 'Raleway', sans-serif;
+        font-family: "Raleway", sans-serif;
         padding-bottom: 2%;
         font-weight: 900;
       }
@@ -148,7 +157,7 @@ const DashboardContainer = styled.div`
 
       h2 {
         font-size: 5rem;
-        font-family: 'Raleway', sans-serif;
+        font-family: "Raleway", sans-serif;
         padding-bottom: 2%;
       }
     }

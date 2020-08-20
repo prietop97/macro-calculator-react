@@ -1,28 +1,29 @@
-import React, { useState, useEffect } from 'react';
-import Header from './Header';
-import styled from 'styled-components';
-import { month, days, year, feets, inches, meals } from './data.js';
-import { connect } from 'react-redux';
-import { sendStats } from '../Redux/UserStats/userStatsActions';
+import React, { useState, useEffect } from "react";
+import Header from "./Header";
+import styled from "styled-components";
+import { month, days, year, feets, inches, meals } from "./data.js";
+import { connect } from "react-redux";
+import { sendStats } from "../Redux/UserStats/userStatsActions";
 
 const initialValues = {
-  gender: '',
-  height: '',
-  weight: '',
-  activity_factor: '',
-  meals_per_day: '',
-  snacks_per_day: '',
-  goal_multiplier: '',
-  birthdate_day: '',
-  birthdate_month: '',
-  birthdate_year: ''
+  gender: "",
+  height: "",
+  weight: "",
+  activity_factor: "",
+  meals_per_day: "",
+  snacks_per_day: "",
+  goal_multiplier: "",
+  birthdate_day: "",
+  birthdate_month: "",
+  birthdate_year: "",
 };
-const BioForm = props => {
+const BioForm = (props) => {
   const [formValues, setFormValues] = useState(initialValues);
   const [height, setHeight] = useState({ feet: 0, inches: 0 });
 
-  const submitHandler = e => {
+  const submitHandler = (e) => {
     e.preventDefault();
+    console.log(formValues);
     props.sendStats(formValues, props.history);
   };
   // console.log(formValues)
@@ -33,22 +34,22 @@ const BioForm = props => {
     setFormValues({ ...formValues, height: totalHeight });
   }, [height]);
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     e.persist();
-    if (e.target.value === '3 meals per day') {
+    if (e.target.value === "3 meals per day") {
       setFormValues({ ...formValues, meals_per_day: 3, snacks_per_day: 0 });
-    } else if (e.target.value === '4 meals per day') {
+    } else if (e.target.value === "4 meals per day") {
       setFormValues({ ...formValues, meals_per_day: 4, snacks_per_day: 0 });
-    } else if (e.target.value === '3 meals + 2 snacks per day') {
+    } else if (e.target.value === "3 meals + 2 snacks per day") {
       setFormValues({ ...formValues, meals_per_day: 3, snacks_per_day: 2 });
-    } else if (e.target.name === 'gender') {
+    } else if (e.target.name === "gender") {
       setFormValues({ ...formValues, [e.target.name]: e.target.value });
     } else {
       setFormValues({ ...formValues, [e.target.name]: e.target.value });
     }
   };
 
-  const handleHeight = e => {
+  const handleHeight = (e) => {
     setHeight({ ...height, [e.target.name]: Number(e.target.value) });
   };
 
@@ -184,15 +185,26 @@ const BioForm = props => {
                 ))}
               </select>
             </div>
-            <button className="continue">Continue</button>
+            <button className="continue" disabled={props.isFetching}>
+              {props.isFetching ? (
+                <i className="fa fa-refresh fa-spin"></i>
+              ) : (
+                "Continue"
+              )}
+            </button>
           </div>
         </form>
       </BioFormContainer>
     </>
   );
 };
-
-export default connect(null, { sendStats })(BioForm);
+const mapStateToProps = (state) => {
+  console.log(state);
+  return {
+    isFetching: state.userStats.isFetching,
+  };
+};
+export default connect(mapStateToProps, { sendStats })(BioForm);
 
 const BioFormContainer = styled.div`
   height: 100vh;
@@ -206,7 +218,7 @@ const BioFormContainer = styled.div`
   .srs {
     font-size: 4rem;
     width: 100%;
-    font-family: 'Raleway', sans-serif;
+    font-family: "Raleway", sans-serif;
     line-height: 0;
     margin-bottom: -3rem;
     padding: 0;
@@ -228,7 +240,7 @@ const BioFormContainer = styled.div`
         display: flex;
         justify-content: flex-start;
         font-size: 2rem;
-        font-family: 'Raleway', sans-serif;
+        font-family: "Raleway", sans-serif;
       }
       .birthdate-inputs {
         display: flex;
@@ -252,7 +264,7 @@ const BioFormContainer = styled.div`
         display: flex;
         justify-content: flex-start;
         font-size: 2rem;
-        font-family: 'Raleway', sans-serif;
+        font-family: "Raleway", sans-serif;
       }
       .height-inputs {
         display: flex;
@@ -287,7 +299,7 @@ const BioFormContainer = styled.div`
         display: flex;
         justify-content: flex-start;
         font-size: 2rem;
-        font-family: 'Raleway', sans-serif;
+        font-family: "Raleway", sans-serif;
       }
       .input,
       select {
@@ -308,7 +320,7 @@ const BioFormContainer = styled.div`
       margin-top: 0.5rem;
       border: #db7c1e solid 1px;
       padding: 1.5rem;
-      font-family: 'Raleway', sans-serif;
+      font-family: "Raleway", sans-serif;
 
       &:hover {
         background: #db7c1e;

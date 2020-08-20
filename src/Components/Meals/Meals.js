@@ -1,8 +1,8 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import styled from 'styled-components';
+import React from "react";
+import { connect } from "react-redux";
+import styled from "styled-components";
 
-const Meals = props => {
+const Meals = (props) => {
   return (
     <MealsContainer>
       <div className="macros">
@@ -18,8 +18,8 @@ const Meals = props => {
   );
 };
 
-const mapStateToProps = state => ({
-  userInfo: state.userStats.Macros
+const mapStateToProps = (state) => ({
+  userInfo: state.userStats.Macros,
 });
 export default connect(mapStateToProps)(Meals);
 
@@ -29,6 +29,7 @@ const MealsContainer = styled.div`
   padding-bottom: 5%;
   @media screen and (max-width: 600px) {
     flex-direction: column;
+    width: 100%;
   }
 
   .macros {
@@ -40,11 +41,11 @@ const MealsContainer = styled.div`
 
     h2 {
       font-size: 2rem;
-      font-family: 'Raleway', sans-serif;
+      font-family: "Raleway", sans-serif;
     }
     h4 {
       font-size: 2rem;
-      font-family: 'Raleway', sans-serif;
+      font-family: "Raleway", sans-serif;
       color: #4f4f4f;
     }
   }

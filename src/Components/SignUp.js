@@ -1,34 +1,26 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { signUp } from '../Redux/UserState/userActions';
-import Header from './Header';
+import React, { useState } from "react";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { signUp } from "../Redux/UserState/userActions";
+import Header from "./Header";
 
-const SignUp = ({ signUp, history, error }) => {
-  console.log(error);
+const SignUp = ({ signUp, history, error, isFetching }) => {
+  console.log(isFetching);
 
   const [formValues, setFormValues] = useState({
-    username: '',
-    password: '',
-    fullname: ''
+    username: "",
+    password: "",
+    fullname: "",
   });
-  const [errorMsg, setErrorMsg] = useState('');
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value });
   };
 
-  const onSubmit = async e => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    try {
-      await signUp(formValues, history);
-    } catch (error) {
-      setErrorMsg('Try Again');
-      setTimeout(() => {
-        setErrorMsg('');
-      }, 5000);
-    }
+    signUp(formValues, history);
   };
 
   return (
@@ -66,11 +58,16 @@ const SignUp = ({ signUp, history, error }) => {
               value={formValues.password}
             />
             <button
+              disabled={isFetching}
               type="submit"
               className="continue"
-              style={{ marginTop: '3rem' }}
+              style={{ marginTop: "3rem" }}
             >
-              Submit
+              {isFetching ? (
+                <i className="fa fa-refresh fa-spin"></i>
+              ) : (
+                "Submit"
+              )}
             </button>
           </form>
           <h3>Already Have An Account?</h3>
@@ -105,12 +102,12 @@ const SignUpContainer = styled.div`
   h2 {
     font-size: 4rem;
     width: 100%;
-    font-family: 'Raleway', sans-serif;
+    font-family: "Raleway", sans-serif;
     padding-bottom: 2%;
   }
 
   h3 {
-    font-family: 'Raleway', sans-serif;
+    font-family: "Raleway", sans-serif;
     font-size: 2.3rem;
     display: flex;
     justify-content: center;
@@ -134,7 +131,7 @@ const SignUpContainer = styled.div`
       display: flex;
       justify-content: flex-start;
       font-size: 2rem;
-      font-family: 'Raleway', sans-serif;
+      font-family: "Raleway", sans-serif;
       padding-bottom: 1%;
     }
 
@@ -158,7 +155,7 @@ const SignUpContainer = styled.div`
     border-radius: 4px;
     border: #db7c1e solid 1px;
     padding: 1rem;
-    font-family: 'Raleway', sans-serif;
+    font-family: "Raleway", sans-serif;
     margin-bottom: 2%;
     margin-top: 1rem;
 
@@ -174,10 +171,11 @@ const SignUpContainer = styled.div`
   }
 `;
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   console.log(state);
   return {
-    error: state.userState.error
+    error: state.userState.error,
+    isFetching: state.userState.isFetching,
   };
 };
 export default connect(mapStateToProps, { signUp })(SignUp);

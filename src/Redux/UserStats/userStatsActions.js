@@ -1,23 +1,23 @@
-import axiosWithAuth from '../../Utils/axiosWithAuth';
+import axiosWithAuth from "../../Utils/axiosWithAuth";
 
-export const FETCH_STATS_START = 'FETCH_STATS_START';
-export const FETCH_STATS_SUCCESS = 'FETCH_STATS_SUCCESS';
-export const FETCH_STATS_FAILED = 'FETCH_STATS_FAILED';
+export const FETCH_STATS_START = "FETCH_STATS_START";
+export const FETCH_STATS_SUCCESS = "FETCH_STATS_SUCCESS";
+export const FETCH_STATS_FAILED = "FETCH_STATS_FAILED";
 
-export const SEND_STATS_START = 'SEND_STATS_START';
-export const SEND_STATS_SUCCESS = 'SEND_STATS_SUCCESS';
-export const SEND_STATS_FAILED = 'SEND_STATS_FAILED';
+export const SEND_STATS_START = "SEND_STATS_START";
+export const SEND_STATS_SUCCESS = "SEND_STATS_SUCCESS";
+export const SEND_STATS_FAILED = "SEND_STATS_FAILED";
 
-export const EDIT_STATS_START = 'EDIT_STATS_START';
-export const EDIT_STATS_SUCCESS = 'EDIT_STATS_SUCCESS';
-export const EDIT_STATS_FAILED = 'EDIT_STATS_FAILED';
+export const EDIT_STATS_START = "EDIT_STATS_START";
+export const EDIT_STATS_SUCCESS = "EDIT_STATS_SUCCESS";
+export const EDIT_STATS_FAILED = "EDIT_STATS_FAILED";
 
-export const sendStats = (info, history) => dispatch => {
+export const sendStats = (info, history) => (dispatch) => {
   dispatch({ type: SEND_STATS_START });
   axiosWithAuth()
-    .post('/info', info)
-    .then(res => {
-        const cal = calculateStats(res.data);
+    .post("/info", info)
+    .then((res) => {
+      const cal = calculateStats(res.data);
       const protein = Math.floor(cal * 0.075);
       const carbs = Math.floor(cal * 0.1);
       const fats = Math.floor(cal * 0.033);
@@ -26,19 +26,19 @@ export const sendStats = (info, history) => dispatch => {
         type: SEND_STATS_SUCCESS,
         payload: {
           data: res.data,
-          calculations: { cal, protein, carbs, fats, macro }
-        }
+          calculations: { cal, protein, carbs, fats, macro },
+        },
       });
-      history.push('/Calculatedpage');
+      history.push("/Calculatedpage");
     })
-    .catch(err => console.log(err));
+    .catch((err) => console.log(err));
 };
 
-export const fetchStats = id => dispatch => {
+export const fetchStats = (id, history) => (dispatch) => {
   dispatch({ type: FETCH_STATS_START });
   axiosWithAuth()
     .get(`/info`)
-    .then(res => {
+    .then((res) => {
       const cal = calculateStats(res.data);
       const protein = Math.floor(cal * 0.075);
       const carbs = Math.floor(cal * 0.1);
@@ -48,33 +48,39 @@ export const fetchStats = id => dispatch => {
         type: FETCH_STATS_SUCCESS,
         payload: {
           data: res.data,
-          calculations: { cal, protein, carbs, fats, macro }
-        }
+          calculations: { cal, protein, carbs, fats, macro },
+        },
       });
     })
-    .catch(err => dispatch({ type: FETCH_STATS_FAILED }));
+    .catch((err) => {
+      console.log(err);
+      if (err.message === "Request failed with status code 400") {
+        history.push("/WelcomePage");
+      }
+      dispatch({ type: FETCH_STATS_FAILED });
+    });
 };
 
-export const editData = (id, formValues, history) => dispatch => {
+export const editData = (id, formValues, history) => (dispatch) => {
   axiosWithAuth()
     .put(`/info/${id}`, formValues)
     .then(() => {
-      history.push('/Dashboard');
+      history.push("/Dashboard");
     })
-    .catch(err => console.log(err));
+    .catch((err) => console.log(err));
 };
 
 ///// NOT REASIB TO USE THIS !! ONLY FOR REACT 2 MVP ---
-export const deleteStats = (id, history) => dispatch => {
+export const deleteStats = (id, history) => (dispatch) => {
   axiosWithAuth()
     .delete(`/info/${id}`)
-    .then(() => history.push('/Biometric'))
-    .catch(err => console.log(err));
+    .then(() => history.push("/Biometric"))
+    .catch((err) => console.log(err));
 };
 
-export const calculateStats = user => {
-  let day = '';
-  let month = '';
+export const calculateStats = (user) => {
+  let day = "";
+  let month = "";
   if (user.birthdate_day <= 9) {
     day = `0${user.birthdate_day}`;
   } else {
@@ -92,7 +98,7 @@ export const calculateStats = user => {
   let oneYear = 1000 * 60 * 60 * 24 * 365;
   let difference = Math.floor((currentDate - birthDate) / oneYear);
   let BMR = 0;
-  if (user.gender === 'male') {
+  if (user.gender === "male") {
     BMR = 66 + 6.23 * user.weight + 12.7 * user.height - 6.8 * difference;
   } else {
     BMR = 655 + 4.35 * user.weight + 4.7 * user.height - 4.5 * difference;
@@ -126,6 +132,6 @@ export const mealPlan = (proteinGrams, carbsGrams, fatsGrams, userInfo) => {
     snackCarbs,
     mealProtein,
     mealCarbs,
-    mealFats
+    mealFats,
   };
 };

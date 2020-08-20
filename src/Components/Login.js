@@ -1,28 +1,33 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { login } from '../Redux/UserState/userActions';
-import styled from 'styled-components';
-import Header from './Header';
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { login } from "../Redux/UserState/userActions";
+import styled from "styled-components";
+import Header from "./Header";
 
-const Login = ({ login, history, error }) => {
-  const [formValues, setFormValues] = useState({ username: '', password: '' });
-  const [errorMsg, setErrorMsg] = useState('');
-
-  const handleChange = e => {
+const Login = ({ login, history, error, isFetching }) => {
+  const [formValues, setFormValues] = useState({ username: "", password: "" });
+  const [errorMsg, setErrorMsg] = useState("");
+  console.log(isFetching);
+  const handleChange = (e) => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async e => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       await login(formValues, history);
     } catch (error) {
-      setErrorMsg('Try Again');
+      setErrorMsg("Try Again");
       setTimeout(() => {
-        setErrorMsg('');
+        setErrorMsg("");
       }, 5000);
     }
+  };
+
+  const handleSubmitDemo = async (e) => {
+    e.preventDefault();
+    login({ username: "demo_acc", password: "thisisademoaccount" }, history);
   };
 
   return (
@@ -53,9 +58,22 @@ const Login = ({ login, history, error }) => {
           <button
             onClick={handleSubmit}
             className="continue"
-            style={{ marginTop: '2rem' }}
+            style={{ marginTop: "2rem" }}
+            disabled={isFetching}
           >
-            Submit
+            {isFetching ? <i className="fa fa-refresh fa-spin"></i> : "Submit"}
+          </button>
+          <button
+            disabled={isFetching}
+            onClick={handleSubmitDemo}
+            className="continue"
+            style={{ marginTop: "2rem" }}
+          >
+            {isFetching ? (
+              <i className="fa fa-refresh fa-spin"></i>
+            ) : (
+              "Demo Account"
+            )}
           </button>
         </form>
         <h3>Don't Have An Account Yet?</h3>
@@ -67,8 +85,9 @@ const Login = ({ login, history, error }) => {
   );
 };
 
-const mapStateToProps = state => ({
-  error: state.userState.error
+const mapStateToProps = (state) => ({
+  error: state.userState.error,
+  isFetching: state.userState.isFetching,
 });
 export default connect(mapStateToProps, { login })(Login);
 
@@ -88,12 +107,12 @@ const LoginContainer = styled.div`
   h2 {
     font-size: 4rem;
     width: 100%;
-    font-family: 'Raleway', sans-serif;
+    font-family: "Raleway", sans-serif;
     padding-bottom: 2%;
   }
 
   h3 {
-    font-family: 'Raleway', sans-serif;
+    font-family: "Raleway", sans-serif;
     font-size: 2.3rem;
     display: flex;
     justify-content: center;
@@ -117,7 +136,7 @@ const LoginContainer = styled.div`
       display: flex;
       justify-content: flex-start;
       font-size: 2rem;
-      font-family: 'Raleway', sans-serif;
+      font-family: "Raleway", sans-serif;
       padding-bottom: 1%;
     }
 
@@ -141,7 +160,7 @@ const LoginContainer = styled.div`
     border-radius: 4px;
     border: #db7c1e solid 1px;
     padding: 1rem;
-    font-family: 'Raleway', sans-serif;
+    font-family: "Raleway", sans-serif;
     margin-bottom: 2%;
 
     &:hover {
