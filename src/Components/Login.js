@@ -63,7 +63,7 @@ const Login = ({ login, history, error, isFetching }) => {
           >
             {isFetching ? <i className="fa fa-refresh fa-spin"></i> : "Submit"}
           </button>
-          <button
+          {/* <button
             disabled={isFetching}
             onClick={handleSubmitDemo}
             className="continue"
@@ -74,7 +74,7 @@ const Login = ({ login, history, error, isFetching }) => {
             ) : (
               "Demo Account"
             )}
-          </button>
+          </button> */}
         </form>
         <h3>Don't Have An Account Yet?</h3>
         <MyLink to="/SignUp">
